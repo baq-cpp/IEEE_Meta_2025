@@ -1474,6 +1474,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 260694538}
     - target: {fileID: 2505584902426570473, guid: 35034c27360c310468dc218145630dba, type: 3}
+      propertyPath: NextCanvas
+      value: 
+      objectReference: {fileID: 1303164306}
+    - target: {fileID: 2505584902426570473, guid: 35034c27360c310468dc218145630dba, type: 3}
+      propertyPath: CurrentCanvas
+      value: 
+      objectReference: {fileID: 137526959}
+    - target: {fileID: 2505584902426570473, guid: 35034c27360c310468dc218145630dba, type: 3}
       propertyPath: MainMenuCanvas
       value: 
       objectReference: {fileID: 137526959}
@@ -1489,6 +1497,14 @@ PrefabInstance:
       propertyPath: SchematicSelectCanvas
       value: 
       objectReference: {fileID: 2122419849}
+    - target: {fileID: 4713382943250200924, guid: 35034c27360c310468dc218145630dba, type: 3}
+      propertyPath: NextCanvas
+      value: 
+      objectReference: {fileID: 137526959}
+    - target: {fileID: 4713382943250200924, guid: 35034c27360c310468dc218145630dba, type: 3}
+      propertyPath: CurrentCanvas
+      value: 
+      objectReference: {fileID: 1303164306}
     - target: {fileID: 4713382943250200924, guid: 35034c27360c310468dc218145630dba, type: 3}
       propertyPath: MainMenuCanvas
       value: 
