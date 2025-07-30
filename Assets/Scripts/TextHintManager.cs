@@ -68,7 +68,9 @@ public class TextHintManager : MonoBehaviour
     {
         // Instantiate a hint entry UI below the content panel
         var go = Instantiate(hintEntryPrefab, contentPanel);
+        go.transform.SetParent(contentPanel, false);
         var textComp = go.GetComponentInChildren<TMP_Text>();
+        //textComp.text = $"{componentType}: {hint}";
         if (textComp != null)
             textComp.text = $"{componentType}: {hint}";
 
