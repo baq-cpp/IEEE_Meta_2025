@@ -13,15 +13,25 @@ public class TextHintManager : MonoBehaviour
         public List<string> hints;
     }
 
-    [SerializeField] private List<ComponentHints> hintsDatabase;
+    public GameObject hintMenu;
+    public GameObject openMenu;
+
+    [SerializeField] private List<ComponentHints> hintsDatabase = new List<ComponentHints>();
     [SerializeField] private Button getHintButton;
-    [SerializeField] private RectTransform contentPanel; // the Content of the Scroll View
-    [SerializeField] private GameObject hintEntryPrefab; // prefab with TMP_Text inside
-    [SerializeField] private ScrollRect scrollRect;
+
+    [Header("Hint Log UI")]
+    [SerializeField] private Transform hintLogContent; // The Content GameObject inside the ScrollView
+    [SerializeField] private GameObject hintEntryPrefab; // A TMP_Text prefab for each new hint
 
     private Dictionary<string, Queue<string>> _hintsLookup;
     private Stack<string> _stack1 = new Stack<string>();
     private Stack<string> _stack2 = new Stack<string>();
+
+
+    void Start()
+    {
+        hintMenu.SetActive(false);
+    }
 
     void Awake()
     {
@@ -43,18 +53,20 @@ public class TextHintManager : MonoBehaviour
 
     public void OnGetHintClicked()
     {
+        hintMenu.SetActive(true);
+        openMenu.SetActive(false);
         OfferHintForTop();
     }
 
     private void OfferHintForTop()
     {
         if (_stack1.Count == 0) return;
-        var current = _stack1.Peek();
 
+        var current = _stack1.Peek();
         if (_hintsLookup.TryGetValue(current, out var queue) && queue.Count > 0)
         {
             var hint = queue.Dequeue();
-            AddHintToLog(current, hint);
+            ShowHint(current, hint);
         }
         else
         {
@@ -64,24 +76,26 @@ public class TextHintManager : MonoBehaviour
         }
     }
 
-    private void AddHintToLog(string componentType, string hint)
-    {
-        // Instantiate a hint entry UI below the content panel
-        var go = Instantiate(hintEntryPrefab, contentPanel);
-        go.transform.SetParent(contentPanel, false);
-        var textComp = go.GetComponentInChildren<TMP_Text>();
-        //textComp.text = $"{componentType}: {hint}";
-        if (textComp != null)
-            textComp.text = $"{componentType}: {hint}";
-
-        // Optional: auto-scroll to bottom
-        Canvas.ForceUpdateCanvases();
-        scrollRect.verticalNormalizedPosition = 0f;
-    }
-
     private void ResetStacks()
     {
         while (_stack2.Count > 0)
             _stack1.Push(_stack2.Pop());
+    }
+
+    private void ShowHint(string componentType, string text)
+    {
+        string fullHint = $"{componentType}: {text}";
+        Debug.Log($"[Hint for {componentType}]: {text}");
+        Debug.Log("Showing Hint: " + fullHint);
+
+        GameObject newHintObj = Instantiate(hintEntryPrefab, hintLogContent);
+        TMP_Text hintTMP = newHintObj.GetComponentInChildren<TMP_Text>();
+        if (hintTMP != null)
+            hintTMP.text = fullHint;
+    }
+
+    public void CloseHintMenu()
+    {
+        hintMenu.SetActive(false);
     }
 }

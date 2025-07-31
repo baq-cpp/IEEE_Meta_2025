@@ -21,5 +21,6 @@ public class SelectionManager : MonoBehaviour
         }
         SceneManager.LoadScene(sceneNames[selectedIndex]);
     }
+
 }
 
