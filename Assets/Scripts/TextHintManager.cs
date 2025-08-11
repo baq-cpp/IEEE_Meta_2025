@@ -13,25 +13,18 @@ public class TextHintManager : MonoBehaviour
         public List<string> hints;
     }
 
+
     public GameObject hintMenu;
     public GameObject openMenu;
 
     [SerializeField] private List<ComponentHints> hintsDatabase = new List<ComponentHints>();
     [SerializeField] private Button getHintButton;
-
-    [Header("Hint Log UI")]
-    [SerializeField] private Transform hintLogContent; // The Content GameObject inside the ScrollView
-    [SerializeField] private GameObject hintEntryPrefab; // A TMP_Text prefab for each new hint
+    [SerializeField] private TMP_Text hintLogText; // The single TMP_Text inside your ScrollView Content
+    [SerializeField] private ScrollRect scrollRect;
 
     private Dictionary<string, Queue<string>> _hintsLookup;
     private Stack<string> _stack1 = new Stack<string>();
     private Stack<string> _stack2 = new Stack<string>();
-
-
-    void Start()
-    {
-        hintMenu.SetActive(false);
-    }
 
     void Awake()
     {
@@ -40,6 +33,7 @@ public class TextHintManager : MonoBehaviour
             _hintsLookup[entry.componentType] = new Queue<string>(entry.hints);
 
         getHintButton.onClick.AddListener(OnGetHintClicked);
+        ClearHintLog();
     }
 
     public void OnComponentInteracted(string componentType)
@@ -66,7 +60,7 @@ public class TextHintManager : MonoBehaviour
         if (_hintsLookup.TryGetValue(current, out var queue) && queue.Count > 0)
         {
             var hint = queue.Dequeue();
-            ShowHint(current, hint);
+            AppendHintToLog(current, hint);
         }
         else
         {
@@ -82,20 +76,22 @@ public class TextHintManager : MonoBehaviour
             _stack1.Push(_stack2.Pop());
     }
 
-    private void ShowHint(string componentType, string text)
+    private void AppendHintToLog(string componentType, string text)
     {
-        string fullHint = $"{componentType}: {text}";
-        Debug.Log($"[Hint for {componentType}]: {text}");
-        Debug.Log("Showing Hint: " + fullHint);
+        string newEntry = $"- <b>{componentType}</b>: {text}";
+        if (!string.IsNullOrEmpty(hintLogText.text))
+            hintLogText.text += "\n\n" + newEntry;
+        else
+            hintLogText.text = newEntry;
 
-        GameObject newHintObj = Instantiate(hintEntryPrefab, hintLogContent);
-        TMP_Text hintTMP = newHintObj.GetComponentInChildren<TMP_Text>();
-        if (hintTMP != null)
-            hintTMP.text = fullHint;
+        Debug.Log($"[Hint for {componentType}]: {text}");
+
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 0f;
     }
 
-    public void CloseHintMenu()
+    private void ClearHintLog()
     {
-        hintMenu.SetActive(false);
+        hintLogText.text = "";
     }
 }
