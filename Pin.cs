@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace breadboard
-{
     public class Pin
     {
         public enum Direction { In, Out }
@@ -24,4 +22,3 @@ namespace breadboard
             Dir = dir;
         }
     }
-}
