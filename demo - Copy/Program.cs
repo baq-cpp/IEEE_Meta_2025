@@ -3,7 +3,7 @@
     static void Main()
     {
         
-        var board = new Breadboard(63, 27);
+        var board = new Breadboard(63, 28);
 
         // Place gates
         var andGate = new Component(6, board, "AND","LEFT");

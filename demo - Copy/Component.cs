@@ -1,6 +1,4 @@
 ﻿
-
-
 public class Component
 {
     public string Label { get; }
