@@ -53,8 +53,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.005184412
-  m_Center: {x: 0.00000023841858, y: 0.0039419085, z: 0.00032949448}
+  m_Radius: 0.0027871132
+  m_Center: {x: 0.00000023841858, y: 0.0039419085, z: 0.00017213821}
 --- !u!114 &3427102002567743319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
   m_HoverSocketSnapping: 1
-  m_SocketSnappingRadius: 0.1
+  m_SocketSnappingRadius: 0.006
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
@@ -354,8 +354,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.37118706
+  m_Center: {x: 0, y: -0.072402015, z: -0.056410957}
 --- !u!114 &145886818347483366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8753095994904678951}
         m_TargetAssemblyTypeName: Tiles, Assembly-CSharp
         m_MethodName: OnHoverEntered
         m_Mode: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_HoverExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8753095994904678951}
         m_TargetAssemblyTypeName: Tiles, Assembly-CSharp
         m_MethodName: OnHoverExited
         m_Mode: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8753095994904678951}
         m_TargetAssemblyTypeName: Tiles, Assembly-CSharp
         m_MethodName: OnSelectEntered
         m_Mode: 0
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8753095994904678951}
         m_TargetAssemblyTypeName: Tiles, Assembly-CSharp
         m_MethodName: OnSelectExited
         m_Mode: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
   m_HoverSocketSnapping: 1
-  m_SocketSnappingRadius: 0.1
+  m_SocketSnappingRadius: 0.0065
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7083549576773312167}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f98cdb1b7d713ab42b1e55de68ef238e, type: 3}
   m_Name: 
@@ -629,7 +629,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4459fff084dd84526ab8fd5082d2eacb, type: 2}
+  - {fileID: 2100000, guid: 53c16fb5d5c516b40a1f6a8fc34132f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

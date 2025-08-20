@@ -62,7 +62,7 @@ public class TilesManage : MonoBehaviour
             else
             {
                 Pins.Add(pair);
-                //Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
+                Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
 
                 GameObject newline = Instantiate(_linePrefab);
                 LineRenderer lineRenderer = newline.GetComponent<LineRenderer>();
