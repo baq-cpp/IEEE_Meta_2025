@@ -4,11 +4,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class TileSocketListener : MonoBehaviour
 {
-    private XRSocketInteractor socket;
+    private UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket;
 
     void Awake()
     {
-        socket = GetComponent<XRSocketInteractor>();
+        socket = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor>();
         socket.selectEntered.AddListener(OnSocketed);
         socket.selectExited.AddListener(OnUnsocketed);
     }

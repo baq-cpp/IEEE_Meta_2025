@@ -22,6 +22,8 @@ public class TilesManage : MonoBehaviour
 
     private Dictionary<(GameObject, GameObject), GameObject> _PinLines = new Dictionary<(GameObject, GameObject), GameObject>();/////////
 
+    private Dictionary<GameObject, int> _SocketUsage = new Dictionary<GameObject, int>();////////////////////////////////
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -51,6 +53,9 @@ public class TilesManage : MonoBehaviour
                     Destroy(lineObj);
                     _PinLines.Remove(pair);
                 }
+
+                DecrementSocketUsage(pair.Item1);
+                DecrementSocketUsage(pair.Item2);
 
 
             }
@@ -99,6 +104,9 @@ public class TilesManage : MonoBehaviour
 
                 _PinLines[pair] = newline;
 
+                IncrementSocketUsage(pair.Item1);
+                IncrementSocketUsage(pair.Item2);
+
             }
             _FirstSelected = null;
             _SecondSelected = null;
@@ -115,14 +123,43 @@ public class TilesManage : MonoBehaviour
         
     }
 
-    private void DisplayPins() {
+
+public void IncrementSocketUsage(GameObject tile)//////////////////////////////
+    {
+        if (tile == null) return;
+
+        if (_SocketUsage.ContainsKey(tile))
+            _SocketUsage[tile]++;
+        else
+            _SocketUsage[tile] = 1;
+    }
+
+public void DecrementSocketUsage(GameObject tile)/////////////////////////////////////////
+    {
+        if (tile == null) return;
+
+        if (_SocketUsage.ContainsKey(tile))
+        {
+            _SocketUsage[tile]--;
+            if (_SocketUsage[tile] <= 0)
+                _SocketUsage.Remove(tile);
+        }
+    }
+
+    public bool IsTileSocket(GameObject tile)//////////////////////////////////////////
+    {
+        return _SocketUsage.ContainsKey(tile) && _SocketUsage[tile] > 0;
+    }
+
+    private void DisplayPins()
+    {
         string output = "Pins: {";
 
         foreach (var pair in Pins)
         {
             //get names
             string nameA = pair.Item1 != null ? pair.Item1.name : "null";
-            string nameB= pair.Item2 != null ? pair.Item2.name : "null";
+            string nameB = pair.Item2 != null ? pair.Item2.name : "null";
 
             //get positions
             string posA = pair.Item1 != null ? $"({pair.Item1.transform.position.x},{pair.Item1.transform.position.z})" : "null";
