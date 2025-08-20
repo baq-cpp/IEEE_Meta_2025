@@ -15,7 +15,7 @@ namespace breadboard
         {
 
 
-            Breadboard board = new Breadboard(63, 30);
+            Breadboard board = new Breadboard(63, 28);
 
             // Place gates
             Component andGate = new Component(6, board, "AND", "LEFT");

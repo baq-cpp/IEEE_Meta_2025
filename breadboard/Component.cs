@@ -24,6 +24,65 @@ namespace breadboard
         private (int row, int col)[] displayPins { get; }
 
         // Constructor for placing a multi-pin component on the board
+        //public Component(int row, Breadboard board, string label, string side, int pinCount = 14)
+        //{
+        //    Label = label;
+        //    displayPins = new (int, int)[pinCount];
+
+        //    // Define columns for left and right sides
+        //    int leftColLeft = 6;   // e.g., column 6 on a 30-col board
+        //    int leftColRight = 8;   // e.g., column 8
+        //    int rightColLeft = 21;  // e.g., column 21
+        //    int rightColRight = 23;  // e.g., column 23
+
+        //    int leftCol, rightCol;
+
+        //    string sideLower = side == null ? "" : side.ToLower();
+        //    if (sideLower == "left")
+        //    {
+        //        leftCol = leftColLeft;
+        //        rightCol = leftColRight;
+        //    }
+        //    else if (sideLower == "right")
+        //    {
+        //        leftCol = rightColLeft;
+        //        rightCol = rightColRight;
+        //    }
+        //    else
+        //    {
+        //        throw new ArgumentException("Side must be 'left' or 'right'");
+        //    }
+
+        //    for (int i = 0; i < pinCount / 2; i++)
+        //    {
+        //        int leftPinNum = i + 1;            // 1..7
+        //        int rightPinNum = pinCount - i;     // 14..8
+
+        //        Pins[i] = new Pin(this, leftPinNum,
+        //            IsOutputPin(leftPinNum) ? Pin.Direction.Out : Pin.Direction.In);
+
+        //        Pins[pinCount - 1 - i] = new Pin(this, rightPinNum,
+        //            IsOutputPin(rightPinNum) ? Pin.Direction.Out : Pin.Direction.In);
+
+        //        displayPins[i] = (row: row + i, col: leftCol);
+        //        displayPins[pinCount - 1 - i] = (row: row + i, col: rightCol);
+
+        //        PinPositions[i + 1] = displayPins[i];                          // Pin 1–7
+        //        PinPositions[pinCount - i] = displayPins[pinCount - 1 - i];    // Pin 14–8
+        //    }
+
+        //    // Place on board (no tuple deconstruction)
+        //    for (int k = 0; k < displayPins.Length; k++)
+        //    {
+        //        var p = displayPins[k];
+        //        if (board.IsOccupied(p.row, p.col))
+        //            throw new InvalidOperationException(
+        //                string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
+        //                              label, p.row, p.col));
+        //        board.PlaceComponent(p.row, p.col, this);
+        //    }
+        //}
+
         public Component(int row, Breadboard board, string label, string side, int pinCount = 14)
         {
             Label = label;
@@ -31,9 +90,9 @@ namespace breadboard
 
             // Define columns for left and right sides
             int leftColLeft = 6;   // e.g., column 6 on a 30-col board
-            int leftColRight = 8;   // e.g., column 8
-            int rightColLeft = 21;  // e.g., column 21
-            int rightColRight = 23;  // e.g., column 23
+            int leftColRight = 7;   // e.g., column 8
+            int rightColLeft = 20;  // e.g., column 21
+            int rightColRight = 21;  // e.g., column 23
 
             int leftCol, rightCol;
 

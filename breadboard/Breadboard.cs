@@ -51,21 +51,21 @@ namespace breadboard
                     string cell = "[]"; // default filler
 
                     // Power rails
-                    if (j == 0 || j == 13 || j == 15 || j == 28) // VCC
+                    if (j == 0 || j == 12 || j == 14 || j == 26) // VCC
                     {
                         cell = "VCC";
                         Vcc.Add((i, j));
                     }
-                    else if (j == 1 || j == 14 || j == 16 || j == 29) // GND
+                    else if (j == 1 || j == 13 || j == 15 || j == 27) // GND
                     {
                         cell = "GND";
                         Gnd.Add((i, j));
                     }
-                    // Gaps
-                    else if (j == 7 || j == 22)
-                    {
-                        cell = " ";
-                    }
+                    //// Gaps
+                    //else if (j == 7 || j == 22)
+                    //{
+                    //    cell = " ";
+                    //}
 
                     grid[i, j] = cell;
                 }
