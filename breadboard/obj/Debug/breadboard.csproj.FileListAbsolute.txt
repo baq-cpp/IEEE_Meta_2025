@@ -5,3 +5,4 @@ C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\bin\Debug\breadboard.e
 C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\bin\Debug\breadboard.pdb
 C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.exe
 C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.pdb
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.exe.config
