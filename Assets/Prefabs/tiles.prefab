@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4573990026912735244}
   - component: {fileID: 1909346057249401842}
   - component: {fileID: 3427102002567743319}
+  - component: {fileID: 896760141092588611}
   m_Layer: 0
   m_Name: Socket
   m_TagString: Untagged
@@ -101,6 +102,23 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
+--- !u!114 &896760141092588611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567225922008435008}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d95aeae5e4592e42939292a2f439c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionRadius: 0.006
+  detectionPoint: {fileID: 9141351750243199446}
 --- !u!1 &2302551364482020521
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,8 +529,8 @@ MonoBehaviour:
       m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
-  m_ShowInteractableHoverMeshes: 0
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_ShowInteractableHoverMeshes: 1
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 7a723ecfb519e7945a7fa67bed0a57f1, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
   m_InteractableHoverScale: 1
@@ -564,6 +582,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d95aeae5e4592e42939292a2f439c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 1
+  detectionRadius: 0.006
+  detectionPoint: {fileID: 9141351750243199446}
 --- !u!1 &7731335583352804798
 GameObject:
   m_ObjectHideFlags: 0
