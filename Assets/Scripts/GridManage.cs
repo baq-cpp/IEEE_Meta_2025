@@ -28,14 +28,8 @@ public class GridManage : MonoBehaviour
     void generateGrid()
     {
 
-        float PowerRailSpacing = 3.0f;
-        
-        float _FirstTerminal = 0.08847f;
-
         float RowGap = 0.0422f;
-        float temp = 20.0f;
-
-
+        
 
         for (int x = 0; x < _width; x++)//loop for width
         {
@@ -50,8 +44,6 @@ public class GridManage : MonoBehaviour
                 float Ypos = y * TerminalSpacing;
                 float zPos = x * HeightSpacing;
 
-
-                float PowerRailVerticalOffset = 0.4f;
 
 
                 if (x >= 5) zPos += RowGap;

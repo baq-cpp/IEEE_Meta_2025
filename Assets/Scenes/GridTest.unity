@@ -2955,7 +2955,7 @@ GameObject:
   - component: {fileID: 438407038}
   - component: {fileID: 438407037}
   m_Layer: 0
-  m_Name: 74LS08_AND
+  m_Name: AND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3022,7 +3022,7 @@ GameObject:
   - component: {fileID: 2063709327}
   - component: {fileID: 2063709326}
   m_Layer: 0
-  m_Name: 74LS04_NOT
+  m_Name: NOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3438,7 +3438,7 @@ GameObject:
   - component: {fileID: 225490863}
   - component: {fileID: 225490862}
   m_Layer: 0
-  m_Name: 74LS86_XOR
+  m_Name: XOR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
