@@ -114,11 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d95aeae5e4592e42939292a2f439c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableMask:
-    serializedVersion: 2
-    m_Bits: 0
-  detectionRadius: 0.006
-  detectionPoint: {fileID: 9141351750243199446}
 --- !u!1 &2302551364482020521
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,8 +325,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fc226930e8fad4c499969204cecfbc05, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -582,11 +576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d95aeae5e4592e42939292a2f439c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableMask:
-    serializedVersion: 2
-    m_Bits: 1
-  detectionRadius: 0.006
-  detectionPoint: {fileID: 9141351750243199446}
 --- !u!1 &7731335583352804798
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public enum BreadBoardSections
     }
 public class Tiles : MonoBehaviour
 {
-    [SerializeField] private Color _baseColor, _OffsetColor; //creates assets in the inspector the different colors/materials
+   // [SerializeField] private Color _baseColor, _OffsetColor; //creates assets in the inspector the different colors/materials
     [SerializeField] private Renderer _renderer; //creates assets in the inspector what will color be added to
 
     [SerializeField] private GameObject _highlight;//creates assets in the inspector
@@ -26,7 +26,7 @@ public class Tiles : MonoBehaviour
 
     public void Init(bool isOffset)
     {
-        _renderer.material.color = isOffset ? _OffsetColor : _baseColor; // makes the spheres alternate colors
+       // _renderer.material.color = isOffset ? _OffsetColor : _baseColor; // makes the spheres alternate colors
     }
     
     public void OnHoverEntered(HoverEnterEventArgs args) // makes white box appear when hovering

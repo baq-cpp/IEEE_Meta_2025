@@ -62,7 +62,7 @@ public class TilesManage : MonoBehaviour
             else
             {
                 Pins.Add(pair);
-                Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
+                //Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
 
                 GameObject newline = Instantiate(_linePrefab);
                 LineRenderer lineRenderer = newline.GetComponent<LineRenderer>();
@@ -166,7 +166,7 @@ public void DecrementSocketUsage(GameObject tile)///////////////////////////////
             string posB = pair.Item2 != null ? $"({pair.Item2.transform.position.x},{pair.Item2.transform.position.z})" : "null";
 
 
-            output += $"[{nameA}{posA},{nameB}{posB}]";
+            output += $"[{nameA},{nameB}]";
 
         }
         output += "  }";
