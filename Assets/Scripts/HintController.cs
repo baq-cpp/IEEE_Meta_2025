@@ -22,6 +22,9 @@ public class HintController : MonoBehaviour
     private int unlockCount = 0;
     private int currentIndex = -1;
 
+    public ScrollRect scrollRect; // Assign your Scroll View's ScrollRect here
+    public GameObject verticalScrollbar; // Assign the Vertical Scrollbar object here
+
     void Start()
     {
         hintMenu.SetActive(false);
@@ -68,8 +71,23 @@ public class HintController : MonoBehaviour
     {
         hintText.text = allHints[currentIndex].details;
         hintNum.text = $"Hint {currentIndex + 1} of {unlockCount}";
+
         UpdateButtons();
+
+        // Force a mesh update so preferredHeight is accurate
+        hintText.ForceMeshUpdate();
+
+        // Check if text height exceeds viewport height
+        float textHeight = hintText.preferredHeight;
+        float viewportHeight = scrollRect.viewport.rect.height;
+
+        bool needsScroll = textHeight > viewportHeight;
+        verticalScrollbar.SetActive(needsScroll);
+
+        // Reset scroll position to top when showing a new hint
+        scrollRect.verticalNormalizedPosition = 1f;
     }
+
 
     void UpdateButtons()
     {
