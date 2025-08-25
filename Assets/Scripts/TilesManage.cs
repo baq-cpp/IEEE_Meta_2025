@@ -67,7 +67,7 @@ public class TilesManage : MonoBehaviour
                 GameObject newline = Instantiate(_linePrefab);
                 LineRenderer lineRenderer = newline.GetComponent<LineRenderer>();
 
-                Vector3 _Offset = Vector3.up * 0.02f;//makes it float
+                Vector3 _Offset = Vector3.up * 0.008f;//makes it float
                 lineRenderer.material = new Material(Shader.Find("Sprites/Default"));//force new material created making each line different color
 
                 Color _SolidColor = _LineColors[_CurrentColorIndex];//these two lines are in charge of geting different color per line
@@ -76,8 +76,8 @@ public class TilesManage : MonoBehaviour
                 lineRenderer.startColor = _SolidColor;
                 lineRenderer.endColor = _SolidColor;
 
-                lineRenderer.startWidth = 0.01f;//make wire appear more round & size
-                lineRenderer.endWidth = 0.01f;
+                lineRenderer.startWidth = 0.005f;//make wire appear more round & size
+                lineRenderer.endWidth = 0.005f;
                 lineRenderer.numCapVertices = 8;
                 lineRenderer.numCornerVertices = 8;
 
