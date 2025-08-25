@@ -325,7 +325,8 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: fc226930e8fad4c499969204cecfbc05, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -546,8 +547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491fdc3e0ed0cf44383cf492ffcb1a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0, g: 0, b: 0, a: 0}
-  _OffsetColor: {r: 0.42352945, g: 0.42352945, b: 0.42352945, a: 0}
   _renderer: {fileID: 2708368870501896765}
   _highlight: {fileID: 6566433566565885620}
   _Selected: {fileID: 7731335583352804798}
