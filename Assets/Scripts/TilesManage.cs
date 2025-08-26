@@ -31,11 +31,11 @@ public class TilesManage : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
-    
+
     public (string, string) GetOrderedPair(string a, string b)
-{
-    return string.Compare(a, b) < 0 ? (a, b) : (b, a);
-}
+    {
+        return string.Compare(a, b) < 0 ? (a, b) : (b, a);
+    }
 
     public void TileSelected(GameObject SelectedTile)
     {
@@ -129,11 +129,13 @@ public class TilesManage : MonoBehaviour
 
         }
         DisplayPins();
+        DisplayConnections();
+        
 
     }
 
 
-public void IncrementSocketUsage(GameObject tile)//////////////////////////////
+    public void IncrementSocketUsage(GameObject tile)//////////////////////////////
     {
         if (tile == null) return;
 
@@ -143,7 +145,7 @@ public void IncrementSocketUsage(GameObject tile)//////////////////////////////
             _SocketUsage[tile] = 1;
     }
 
-public void DecrementSocketUsage(GameObject tile)/////////////////////////////////////////
+    public void DecrementSocketUsage(GameObject tile)/////////////////////////////////////////
     {
         if (tile == null) return;
 
@@ -183,4 +185,23 @@ public void DecrementSocketUsage(GameObject tile)///////////////////////////////
         Debug.Log(output);
 
     }
+    
+
+
+
+    public void DisplayConnections()
+{
+    string output = "Connections: { ";
+
+    foreach (var connection in _Connections)
+    {
+        string a = connection.Item1;
+        string b = connection.Item2;
+        output += $"({a}, {b}) ";
+    }
+
+    output += "}";
+
+    Debug.Log(output);
+}
 }

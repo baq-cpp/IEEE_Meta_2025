@@ -37,6 +37,7 @@ private void OnSocketed(SelectEnterEventArgs args)
 
     TilesManage.Instance.IncrementSocketUsage(socketObj);
         Debug.Log($"{socketCoordName},{insertedObj}");
+        
         TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));/////////////////////
 
     //Debug.Log($"Socket {socketCoordName} now socketed with {insertedObjCoordName}");
