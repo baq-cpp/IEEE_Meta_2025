@@ -23487,7 +23487,7 @@ GameObject:
   - component: {fileID: 8776938155973611510}
   - component: {fileID: 8776938155973611509}
   m_Layer: 0
-  m_Name: LED_Green
+  m_Name: LED 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26766,7 +26766,7 @@ GameObject:
   - component: {fileID: 7645572860354836289}
   - component: {fileID: 7645572860354836288}
   m_Layer: 0
-  m_Name: LED_Red
+  m_Name: LED 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33152,7 +33152,7 @@ GameObject:
   - component: {fileID: 6567028584392541859}
   - component: {fileID: 7510081653402804988}
   m_Layer: 0
-  m_Name: DIP Switch Body
+  m_Name: SWITCH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
