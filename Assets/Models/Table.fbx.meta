@@ -3,12 +3,7 @@ guid: 580179cb5be9fb342ae03a909fca2234
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Poliigon_WoodVeneerOak_7760_2K
-    second: {fileID: 2100000, guid: c8d7fe65c3ded9d42a29bb37646bce71, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
