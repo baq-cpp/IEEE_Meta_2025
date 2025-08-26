@@ -24,10 +24,17 @@ public class TilesManage : MonoBehaviour
 
     private Dictionary<GameObject, int> _SocketUsage = new Dictionary<GameObject, int>();////////////////////////////////
 
+    public HashSet<(string, string)> _Connections = new HashSet<(string, string)>();
+
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+    }
+
+    public (string, string) GetOrderedPair(string a, string b)
+    {
+        return string.Compare(a, b) < 0 ? (a, b) : (b, a);
     }
 
     public void TileSelected(GameObject SelectedTile)
@@ -47,6 +54,7 @@ public class TilesManage : MonoBehaviour
 
                 Pins.Remove(pair);
                 //Debug.Log($"Removed pin:({_FirstSelected.name},{_SecondSelected.name})");
+                _Connections.Remove(GetOrderedPair(_FirstSelected.name, _SecondSelected.name));
 
                 if (_PinLines.TryGetValue(pair, out var lineObj))
                 {
@@ -63,11 +71,12 @@ public class TilesManage : MonoBehaviour
             {
                 Pins.Add(pair);
                 //Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
+                _Connections.Add(GetOrderedPair(_FirstSelected.name, _SecondSelected.name));////////////////////////
 
                 GameObject newline = Instantiate(_linePrefab);
                 LineRenderer lineRenderer = newline.GetComponent<LineRenderer>();
 
-                Vector3 _Offset = Vector3.up * 0.02f;//makes it float
+                Vector3 _Offset = Vector3.up * 0.008f;//makes it float
                 lineRenderer.material = new Material(Shader.Find("Sprites/Default"));//force new material created making each line different color
 
                 Color _SolidColor = _LineColors[_CurrentColorIndex];//these two lines are in charge of geting different color per line
@@ -76,8 +85,8 @@ public class TilesManage : MonoBehaviour
                 lineRenderer.startColor = _SolidColor;
                 lineRenderer.endColor = _SolidColor;
 
-                lineRenderer.startWidth = 0.01f;//make wire appear more round & size
-                lineRenderer.endWidth = 0.01f;
+                lineRenderer.startWidth = 0.005f;//make wire appear more round & size
+                lineRenderer.endWidth = 0.005f;
                 lineRenderer.numCapVertices = 8;
                 lineRenderer.numCornerVertices = 8;
 
@@ -120,11 +129,13 @@ public class TilesManage : MonoBehaviour
 
         }
         DisplayPins();
+        DisplayConnections();
         
+
     }
 
 
-public void IncrementSocketUsage(GameObject tile)//////////////////////////////
+    public void IncrementSocketUsage(GameObject tile)//////////////////////////////
     {
         if (tile == null) return;
 
@@ -134,7 +145,7 @@ public void IncrementSocketUsage(GameObject tile)//////////////////////////////
             _SocketUsage[tile] = 1;
     }
 
-public void DecrementSocketUsage(GameObject tile)/////////////////////////////////////////
+    public void DecrementSocketUsage(GameObject tile)/////////////////////////////////////////
     {
         if (tile == null) return;
 
@@ -174,4 +185,23 @@ public void DecrementSocketUsage(GameObject tile)///////////////////////////////
         Debug.Log(output);
 
     }
+    
+
+
+
+    public void DisplayConnections()
+{
+    string output = "Connections: { ";
+
+    foreach (var connection in _Connections)
+    {
+        string a = connection.Item1;
+        string b = connection.Item2;
+        output += $"({a}, {b}) ";
+    }
+
+    output += "}";
+
+    Debug.Log(output);
+}
 }
