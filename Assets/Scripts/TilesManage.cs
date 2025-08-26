@@ -24,11 +24,18 @@ public class TilesManage : MonoBehaviour
 
     private Dictionary<GameObject, int> _SocketUsage = new Dictionary<GameObject, int>();////////////////////////////////
 
+    public HashSet<(string, string)> _Connections = new HashSet<(string, string)>();
+
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
+    
+    public (string, string) GetOrderedPair(string a, string b)
+{
+    return string.Compare(a, b) < 0 ? (a, b) : (b, a);
+}
 
     public void TileSelected(GameObject SelectedTile)
     {
@@ -47,6 +54,7 @@ public class TilesManage : MonoBehaviour
 
                 Pins.Remove(pair);
                 //Debug.Log($"Removed pin:({_FirstSelected.name},{_SecondSelected.name})");
+                _Connections.Remove(GetOrderedPair(_FirstSelected.name, _SecondSelected.name));
 
                 if (_PinLines.TryGetValue(pair, out var lineObj))
                 {
@@ -63,6 +71,7 @@ public class TilesManage : MonoBehaviour
             {
                 Pins.Add(pair);
                 //Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
+                _Connections.Add(GetOrderedPair(_FirstSelected.name, _SecondSelected.name));////////////////////////
 
                 GameObject newline = Instantiate(_linePrefab);
                 LineRenderer lineRenderer = newline.GetComponent<LineRenderer>();
@@ -120,7 +129,7 @@ public class TilesManage : MonoBehaviour
 
         }
         DisplayPins();
-        
+
     }
 
 

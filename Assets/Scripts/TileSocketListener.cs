@@ -37,10 +37,11 @@ private void OnSocketed(SelectEnterEventArgs args)
 
     TilesManage.Instance.IncrementSocketUsage(socketObj);
         Debug.Log($"{socketCoordName},{insertedObj}");
+        TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));/////////////////////
 
     //Debug.Log($"Socket {socketCoordName} now socketed with {insertedObjCoordName}");
 
-    // Enable trigger
+        // Enable trigger
         if (socketCollider != null)
             socketCollider.isTrigger = true;
 
@@ -63,7 +64,8 @@ private void OnSocketed(SelectEnterEventArgs args)
 
         TilesManage.Instance.DecrementSocketUsage(socketObj);
         Debug.Log($"{socketObj.name} unsocketed from {removedObj.name}");
-    Debug.Log($"Socket {socketCoordName} now unsocketed with {insertedObjCoordName}");
+        
+        TilesManage.Instance._Connections.Remove(TilesManage.Instance.GetOrderedPair(socketCoordName, removedObj.name));
 }
 }
 
