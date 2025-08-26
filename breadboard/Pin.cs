@@ -17,7 +17,6 @@ namespace breadboard
         public bool CurrentSignal { get; set; }
 
 
-
         public Pin(Component owner, int index, Direction dir)
         {
             Owner = owner;
