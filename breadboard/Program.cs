@@ -18,8 +18,9 @@ namespace breadboard
             Breadboard board = new Breadboard(63, 28);
 
             // Place gates
-            Component andGate = new Component(6, board, "AND", "LEFT");
-            Component xorGate = new Component(19, board, "XOR", "RIGHT");
+            Component andGate = new Component(6,6, board, "AND");
+            Component xorGate = new Component(19, 21, board, "XOR");
+            Component notGate = new Component(19, 6, board, "NOT");
 
             // Connect power and ground for AND gate
             Wire.Connect(board.Vcc[0], andGate.PinPositions[14], "Vcc", board, "P");
@@ -31,8 +32,8 @@ namespace breadboard
 
 
             // Inputs to AND gate
-            Wire.Connect(board.Vcc[2], andGate.PinPositions[1], "B", board, "I");
-            Wire.Connect(board.Vcc[4], andGate.PinPositions[2], "C", board, "I");
+            Wire.Connect(board.Vcc[2], andGate.PinPositions[1], "A", board, "I");
+            Wire.Connect(board.Vcc[4], andGate.PinPositions[2], "B", board, "I");
 
             // Connect AND output to XOR input
             Wire.Connect(andGate.PinPositions[3], xorGate.PinPositions[1], "BC", board, "G2G");

@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 1547742a77b1001488fa483db7b0e32a
+  productGUID: 146f3d4330cbc274ba94a12466009d9f
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: IEEE_Meta_2025
+  productName: VR_Starter_Sprint
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -587,6 +587,9 @@ PlayerSettings:
   - m_BuildTarget: WebGLSupport
     m_APIs: 0b000000
     m_Automatic: 1
+  - m_BuildTarget: WindowsStandaloneSupport
+    m_APIs: 02000000
+    m_Automatic: 0
   m_BuildTargetVRSettings:
   - m_BuildTarget: Standalone
     m_Enabled: 0
@@ -916,14 +919,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: IEEE_Meta_2025
+  metroPackageName: VR_Starter_Sprint
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: IEEE_Meta_2025
+  metroApplicationDescription: VR_Starter_Sprint
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -993,13 +996,13 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 1
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 186114ff-61b6-429a-b4bb-2b3f9826f4d7
+  cloudProjectId: 8233da42-0367-4e14-b9bd-3ce56e8b9996
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: IEEE_Meta_2025 2025-07-02_13-33-24
-  organizationId: jon-kwong
+  projectName: VR_Starter_Sprint 2025-06-16_11-39-22
+  organizationId: nathan_bernal
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

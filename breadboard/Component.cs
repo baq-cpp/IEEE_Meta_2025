@@ -26,62 +26,116 @@ namespace breadboard
 
         
 
-        public Component(int row, Breadboard board, string label, string side, int pinCount = 14)
+        public Component(int row, int col, Breadboard board, string label, int pinCount = 14)
         {
-            Label = label;
-            displayPins = new (int, int)[pinCount];
-
-            // Define columns for left and right sides
-            int leftColLeft = 6;   // e.g., column 6 on a 30-col board
-            int leftColRight = 7;   // e.g., column 8
-            int rightColLeft = 20;  // e.g., column 21
-            int rightColRight = 21;  // e.g., column 23
-
-            int leftCol, rightCol;
-
-            string sideLower = side == null ? "" : side.ToLower();
-            if (sideLower == "left")
+            if (label == "NOT")
             {
-                leftCol = leftColLeft;
-                rightCol = leftColRight;
+                Console.WriteLine("Placing NOT gate at ({0},{1})", row, col);
+                Label = label;
+                displayPins = new (int, int)[pinCount];
+
+                // Define columns for left and right sides
+                int leftCol = col;   // e.g., column 8
+                int rightCol = col + 1;
+                //int rightColLeft = 20;  // e.g., column 21
+                //int rightColRight = 21;  // e.g., column 23
+
+                for (int i = 0; i < pinCount / 2; i++)
+                {
+                    int leftPinNum = i + 1;            // 1..7
+                    int rightPinNum = pinCount - i;     // 14..8
+
+                    Pins[i] = new Pin(this, leftPinNum,
+                        IsOutputPin(leftPinNum) ? Pin.Direction.Out : Pin.Direction.In);
+
+                    Pins[pinCount - 1 - i] = new Pin(this, rightPinNum,
+                        IsOutputPin(rightPinNum) ? Pin.Direction.Out : Pin.Direction.In);
+
+                    displayPins[i] = (row: row + i, col: leftCol);
+                    displayPins[pinCount - 1 - i] = (row: row + i, col: rightCol);
+
+                    PinPositions[i + 1] = displayPins[i];                          // Pin 1–7 
+                    PinPositions[pinCount - i] = displayPins[pinCount - 1 - i];    // Pin 14–8
+                }
+                for (int k = 0; k < displayPins.Length; k++)
+                {
+                    var p = displayPins[k];
+                    if (board.IsOccupied(p.row, p.col))
+                        throw new InvalidOperationException(
+                            string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
+                                          label, p.row, p.col));
+                    board.PlaceComponent(p.row, p.col, this);
+                }
             }
-            else if (sideLower == "right")
-            {
-                leftCol = rightColLeft;
-                rightCol = rightColRight;
+            else if (label == "DIP"){
+                Label = label;
+                displayPins = new (int, int)[pinCount];
+
+                int leftCol = col;   // e.g., column 8
+                int rightCol = col + 1;
+
+                for (int i = 0; i < pinCount / 2; i++)
+                    {
+                        int leftPinNum = i + 1;            // 1..7
+                        int rightPinNum = pinCount - i;     // 14..8
+
+                        Pins[i] = new Pin(this, leftPinNum, Pin.Direction.In );
+
+                        Pins[pinCount - 1 - i] = new Pin(this, rightPinNum, Pin.Direction.Out);
+
+                        displayPins[i] = (row: row + i, col: leftCol);
+                        displayPins[pinCount - 1 - i] = (row: row + i, col: rightCol);
+
+                        PinPositions[i + 1] = displayPins[i];                          // Pin 1–7 
+                        PinPositions[pinCount - i] = displayPins[pinCount - 1 - i];    // Pin 14–8
+                }
+                for (int k = 0; k < displayPins.Length; k++)
+                {
+                    var p = displayPins[k];
+                    if (board.IsOccupied(p.row, p.col))
+                        throw new InvalidOperationException(
+                            string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
+                                          label, p.row, p.col));
+                    board.PlaceComponent(p.row, p.col, this);
+                }
             }
             else
             {
-                throw new ArgumentException("Side must be 'left' or 'right'");
-            }
+                Label = label;
+                displayPins = new (int, int)[pinCount];
 
-            for (int i = 0; i < pinCount / 2; i++)
-            {
-                int leftPinNum = i + 1;            // 1..7
-                int rightPinNum = pinCount - i;     // 14..8
+                // Define columns for left and right sides
+                int leftCol = col;   // e.g., column 6 on a 30-col board
+                int rightCol = col + 1;   // e.g., column 8
 
-                Pins[i] = new Pin(this, leftPinNum,
-                    IsOutputPin(leftPinNum) ? Pin.Direction.Out : Pin.Direction.In);
+                for (int i = 0; i < pinCount / 2; i++)
+                {
+                    int leftPinNum = i + 1;            // 1..7
+                    int rightPinNum = pinCount - i;     // 14..8
 
-                Pins[pinCount - 1 - i] = new Pin(this, rightPinNum,
-                    IsOutputPin(rightPinNum) ? Pin.Direction.Out : Pin.Direction.In);
+                    Pins[i] = new Pin(this, leftPinNum,
+                        IsNotOutputPin(leftPinNum) ? Pin.Direction.Out : Pin.Direction.In);
 
-                displayPins[i] = (row: row + i, col: leftCol);
-                displayPins[pinCount - 1 - i] = (row: row + i, col: rightCol);
+                    Pins[pinCount - 1 - i] = new Pin(this, rightPinNum,
+                        IsNotOutputPin(rightPinNum) ? Pin.Direction.Out : Pin.Direction.In);
 
-                PinPositions[i + 1] = displayPins[i];                          // Pin 1–7 
-                PinPositions[pinCount - i] = displayPins[pinCount - 1 - i];    // Pin 14–8
-            }
+                    displayPins[i] = (row: row + i, col: leftCol);
+                    displayPins[pinCount - 1 - i] = (row: row + i, col: rightCol);
 
-            // Place on board (no tuple deconstruction)
-            for (int k = 0; k < displayPins.Length; k++)
-            {
-                var p = displayPins[k];
-                if (board.IsOccupied(p.row, p.col))
-                    throw new InvalidOperationException(
-                        string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
-                                      label, p.row, p.col));
-                board.PlaceComponent(p.row, p.col, this);
+                    PinPositions[i + 1] = displayPins[i];                          // Pin 1–7 
+                    PinPositions[pinCount - i] = displayPins[pinCount - 1 - i];    // Pin 14–8
+                }
+
+                // Place on board (no tuple deconstruction)
+                for (int k = 0; k < displayPins.Length; k++)
+                {
+                    var p = displayPins[k];
+                    if (board.IsOccupied(p.row, p.col))
+                        throw new InvalidOperationException(
+                            string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
+                                          label, p.row, p.col));
+                    board.PlaceComponent(p.row, p.col, this);
+                }
             }
         }
 
@@ -93,7 +147,7 @@ namespace breadboard
 
         public Component(string label, int pinCount, int value)
         {
-            if (label == "resistor")
+            if (label == "R")
             {
                 label = Convert.ToString(value);
                 displayPins = new (int, int)[pinCount];
@@ -113,6 +167,11 @@ namespace breadboard
         private bool IsOutputPin(int pinNumber)
         {
             return pinNumber == 3 || pinNumber == 6 || pinNumber == 8 || pinNumber == 11;
+        }
+
+        private bool IsNotOutputPin(int pinNumber)
+        {
+            return pinNumber == 2 || pinNumber == 4 || pinNumber == 6 || pinNumber == 8 || pinNumber == 10 || pinNumber == 12;
         }
 
         public void CreateAdjacencyList(Breadboard board)

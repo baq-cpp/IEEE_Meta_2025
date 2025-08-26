@@ -1,5 +1,18 @@
 {
   "dependencies": {
+    "com.meta.xr.simulator": {
+      "version": "77.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.21",
       "depth": 2,
@@ -261,7 +274,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.interaction.toolkit": {
-      "version": "3.1.1",
+      "version": "3.1.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -296,6 +309,15 @@
         "com.unity.xr.core-utils": "2.2.1",
         "com.unity.modules.subsystems": "1.0.0",
         "com.unity.xr.legacyinputhelpers": "2.1.11"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.oculus": {
+      "version": "4.5.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "4.4.0"
       },
       "url": "https://packages.unity.com"
     },

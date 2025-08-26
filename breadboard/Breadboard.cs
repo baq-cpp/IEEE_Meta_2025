@@ -61,11 +61,6 @@ namespace breadboard
                         cell = "GND";
                         Gnd.Add((i, j));
                     }
-                    //// Gaps
-                    //else if (j == 7 || j == 22)
-                    //{
-                    //    cell = " ";
-                    //}
 
                     grid[i, j] = cell;
                 }
