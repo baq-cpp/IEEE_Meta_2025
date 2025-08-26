@@ -11,15 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu_Schematic.unity
     guid: 37c6a053c21a90f40b04b0d4a7a75a8c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Schematic_One_Scene.unity
     guid: 1326543bf434b6843b6e19d5c4f04090
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Schematic_Two_Scene.unity
     guid: c8229cffa2d2e514ea4332453d39119b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Schematic_Three_Scene.unity
     guid: ef075cae583e4a04496ceeadc796212d
+  - enabled: 1
+    path: Assets/Scenes/Schematic_1.unity
+    guid: 3259e588c272122408b4a7d35f8eaca2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

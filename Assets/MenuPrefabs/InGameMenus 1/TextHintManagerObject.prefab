@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8740975984373897072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5988362882292387256}
+  - component: {fileID: 6453900342726670463}
+  m_Layer: 0
+  m_Name: TextHintManagerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5988362882292387256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740975984373897072}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.82672, y: 2.75661, z: 30.51919}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6453900342726670463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740975984373897072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52376da82c448543814626031b245e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintMenu: {fileID: 0}
+  openMenu: {fileID: 0}
+  getHintButton: {fileID: 0}
+  hintLogText: {fileID: 0}
+  scrollRect: {fileID: 0}
+  imagePopupPanel: {fileID: 0}
+  popupHintText: {fileID: 0}
+  popupHintImage: {fileID: 0}
+  popupCloseButton: {fileID: 0}
+  hintsDatabase:
+  - componentType: Resistor
+    hints:
+    - text: The color bands on the resistor indicate its resistance.
+      image: {fileID: 21300000, guid: ed2fdb1670d39274ea8c4f3c64806087, type: 3}
+  - componentType: LED
+    hints:
+    - text: LEDs are polarized, meaning they have a positive and negative side. The
+        longer leg is positive (anode) and the shorter leg is negative (cathode).
+      image: {fileID: 21300000, guid: 7f148ef56cb433540a68b976bc40a3ee, type: 3}
+    - text: Because LEDs can only handle so much voltage, a resistor (330 ohms) must
+        be connected in series with the anode side.
+      image: {fileID: 0}
+  - componentType: IC
+    hints:
+    - text: Ensure the orientation of the chip is correct. The notch at the top of
+        the chip indicates Pin 1 is the top left.
+      image: {fileID: 0}
+    - text: "The IC\u2019s pinout has labels for each pin. To power on the IC chip,
+        GND must be connected to the blue rail on the breadboard, and Vcc must be
+        connected to the red rail."
+      image: {fileID: 0}
+    - text: "A two-input chip has input indicators labeled with \u2018A\u2019 and
+        \u2018B.\u2019 A one-input chip has input indicators labeled with only \u2018A.\u2019
+        The output pins are labeled with a \u201CY.\u201D "
+      image: {fileID: 0}
+  - componentType: Dip Switch
+    hints:
+    - text: The side closest to ON of the Dip Switch is connected to ground. The
+        other side closest to the numbers has resistors connected to VCC.
+      image: {fileID: 21300000, guid: 7cc610fb7c1e3a3448f305320dc0a0a1, type: 3}
+    - text: Opening the switch (disconnecting it from ground) allows power to flow
+        into the circuit. Closing the switch (to ON) means the ground is connected.
+        When ground is connected, power is not flowing through the circuit.
+      image: {fileID: 0}
+  - componentType: Breadboard
+    hints:
+    - text: Each set of rows on the breadboard is connected internally, as shown
+        with the vertical green lines. The power rails on the top and bottom of the
+        breadboard also have internal connections, as shown with the horizontal green
+        lines.
+      image: {fileID: 21300000, guid: bf79f740775a8a74fbc6edf5e6cfd83b, type: 3}
+  - componentType: Jumper Wires
+    hints:
+    - text: Jumper wires provide a connection component-to-component on the breadboard.
+      image: {fileID: 0}
+  componentColors:
+  - componentType: Resistor
+    color: {r: 1, g: 0.23113209, b: 0.23113209, a: 0}
+  - componentType: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - componentType: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - componentType: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - componentType: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+  - componentType: 
+    color: {r: 0, g: 0, b: 0, a: 0}
