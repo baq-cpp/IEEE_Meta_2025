@@ -67,7 +67,7 @@ namespace breadboard
                     board.PlaceComponent(p.row, p.col, this);
                 }
             }
-            else if (label == "DIP"){
+            else if (label == "SWITCH"){
                 Label = label;
                 displayPins = new (int, int)[pinCount];
 

@@ -181,6 +181,20 @@ namespace breadboard
         {
             return componentsGrid.TryGetValue(pos, out component);
         }
+
+        //public void checkDuplicates()
+        //{
+        //    for (int i = 0; i < registeredComponents.Count; i++)
+        //    {
+        //        foreach (var j in registeredComponents)
+        //        {
+        //            if (i.Label == j.Label)
+        //            {
+        //                count++;
+        //            }
+        //        }
+        //    }
+        //}
     }
 
 }
