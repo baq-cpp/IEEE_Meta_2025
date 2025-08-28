@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Breadboard : MonoBehaviour
 {
+
+    public static Breadboard Instance;
     public int Rows { get; }
     public int Columns
     {
@@ -21,15 +23,15 @@ public class Breadboard : MonoBehaviour
     public List<(int row, int col)> Vcc { get; } = new List<(int row, int col)>();
     public List<(int row, int col)> Gnd { get; } = new List<(int row, int col)>();
 
-    private Dictionary<(int row, int col), Component> componentsGrid =
-        new Dictionary<(int row, int col), Component>();
+    private Dictionary<(int row, int col), Component2> componentsGrid =
+        new Dictionary<(int row, int col), Component2>();
 
-    private List<Component> registeredComponents = new List<Component>();
+    private List<Component2> registeredComponents = new List<Component2>();
     private List<((int row, int col), (int row, int col))> logicalConnections =
         new List<((int row, int col), (int row, int col))>();
 
-    public Dictionary<Component, List<Component>> AdjacencyList { get; private set; } =
-        new Dictionary<Component, List<Component>>();
+    public Dictionary<Component2, List<Component2>> AdjacencyList { get; private set; } =
+        new Dictionary<Component2, List<Component2>>();
 
     public Breadboard(int rows, int columns)
     {
@@ -66,7 +68,7 @@ public class Breadboard : MonoBehaviour
         }
     }
 
-    public void PlaceComponent(int row, int col, Component component)
+    public void PlaceComponent(int row, int col, Component2 component)
     {
         if (IsValidPosition(row, col))
         {
@@ -88,46 +90,55 @@ public class Breadboard : MonoBehaviour
         logicalConnections.Add((a, b));
     }
 
-    public void BuildAdjacencyList()
+    public Dictionary<Component2, List<Component2>> BuildAdjacencyList()
     {
+        // 1) Make sure each component's per-pin adjacency is up to date
+        foreach (var comp in registeredComponents)
+        {
+            comp.CreateAdjacencyList(this);
+        }
+
+        // 2) Merge into a board-level undirected graph
         AdjacencyList.Clear();
 
         foreach (var component in registeredComponents)
         {
-            var connectedComponents = new HashSet<Component>();
+            var connected = new HashSet<Component2>();
 
-            foreach (var pinEntry in component.AdjacencyList)
+            // From component-level pin adjacencies
+            foreach (var kv in component.AdjacencyList)        // kv: pinIndex -> List<Component2>
             {
-                foreach (var neighborComp in pinEntry.Value)
+                var list = kv.Value;
+                if (list == null) continue;
+                foreach (var n in list)
                 {
-                    if (neighborComp != component)
-                    {
-                        connectedComponents.Add(neighborComp);
-                    }
+                    if (n != null && n != component)
+                        connected.Add(n);
                 }
             }
 
+            // From board-level logicalConnections (grid cell pairs)
             foreach (var connection in logicalConnections)
             {
                 var a = connection.Item1;
                 var b = connection.Item2;
 
-                Component compA, compB;
-
-                if (componentsGrid.TryGetValue(a, out compA) &&
-                    componentsGrid.TryGetValue(b, out compB))
+                if (componentsGrid.TryGetValue(a, out var compA) &&
+                    componentsGrid.TryGetValue(b, out var compB))
                 {
-                    if (compA == component && compB != component)
-                        connectedComponents.Add(compB);
-                    else if (compB == component && compA != component)
-                        connectedComponents.Add(compA);
+                    if (ReferenceEquals(compA, component) && !ReferenceEquals(compB, component))
+                        connected.Add(compB);
+                    else if (ReferenceEquals(compB, component) && !ReferenceEquals(compA, component))
+                        connected.Add(compA);
                 }
             }
 
-            if (connectedComponents.Count > 0)
-                AdjacencyList[component] = new List<Component>(connectedComponents);
+            if (connected.Count > 0)
+                AdjacencyList[component] = new List<Component2>(connected);
         }
-    }
+                return AdjacencyList;
+        
+     }
 
     public void Display()
     {
@@ -146,7 +157,7 @@ public class Breadboard : MonoBehaviour
     {
         Console.WriteLine("Component-to-Component Connections:\n");
 
-        var seen = new HashSet<(Component, Component)>();
+        var seen = new HashSet<(Component2, Component2)>();
 
         foreach (var entry in AdjacencyList)
         {
@@ -176,7 +187,7 @@ public class Breadboard : MonoBehaviour
         return grid[row, col];
     }
 
-    public bool TryGetComponentAt((int row, int col) pos, out Component component)
+    public bool TryGetComponentAt((int row, int col) pos, out Component2 component)
     {
         return componentsGrid.TryGetValue(pos, out component);
     }
@@ -196,10 +207,14 @@ public class Breadboard : MonoBehaviour
     //}
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
+        // DisplayConnections();
     }
+
 
     // Update is called once per frame
     void Update()

@@ -89,46 +89,46 @@ namespace breadboard
             logicalConnections.Add((a, b));
         }
 
-        public void BuildAdjacencyList()
-        {
-            AdjacencyList.Clear();
+        //public void BuildAdjacencyList()
+        //{
+        //    AdjacencyList.Clear();
 
-            foreach (var component in registeredComponents)
-            {
-                var connectedComponents = new HashSet<Component>();
+        //    foreach (var component in registeredComponents)
+        //    {
+        //        var connectedComponents = new HashSet<Component>();
 
-                foreach (var pinEntry in component.AdjacencyList)
-                {
-                    foreach (var neighborComp in pinEntry.Value)
-                    {
-                        if (neighborComp != component)
-                        {
-                            connectedComponents.Add(neighborComp);
-                        }
-                    }
-                }
+        //        foreach (var pinEntry in component.AdjacencyList)
+        //        {
+        //            foreach (var neighborComp in pinEntry.Value)
+        //            {
+        //                if (neighborComp != component)
+        //                {
+        //                    connectedComponents.Add(neighborComp);
+        //                }
+        //            }
+        //        }
 
-                foreach (var connection in logicalConnections)
-                {
-                    var a = connection.Item1;
-                    var b = connection.Item2;
+        //        foreach (var connection in logicalConnections)
+        //        {
+        //            var a = connection.Item1;
+        //            var b = connection.Item2;
 
-                    Component compA, compB;
+        //            Component compA, compB;
 
-                    if (componentsGrid.TryGetValue(a, out compA) &&
-                        componentsGrid.TryGetValue(b, out compB))
-                    {
-                        if (compA == component && compB != component)
-                            connectedComponents.Add(compB);
-                        else if (compB == component && compA != component)
-                            connectedComponents.Add(compA);
-                    }
-                }
+        //            if (componentsGrid.TryGetValue(a, out compA) &&
+        //                componentsGrid.TryGetValue(b, out compB))
+        //            {
+        //                if (compA == component && compB != component)
+        //                    connectedComponents.Add(compB);
+        //                else if (compB == component && compA != component)
+        //                    connectedComponents.Add(compA);
+        //            }
+        //        }
 
-                if (connectedComponents.Count > 0)
-                    AdjacencyList[component] = new List<Component>(connectedComponents);
-            }
-        }
+        //        if (connectedComponents.Count > 0)
+        //            AdjacencyList[component] = new List<Component>(connectedComponents);
+        //    }
+        //}
 
         public void Display()
         {
@@ -195,6 +195,53 @@ namespace breadboard
         //        }
         //    }
         //}
+        public void BuildAdjacencyList()
+        {
+            // 1) Make sure each component's per-pin adjacency is up to date
+            foreach (var comp in registeredComponents)
+            {
+                comp.CreateAdjacencyList(this);
+            }
+
+            // 2) Merge into a board-level undirected graph
+            AdjacencyList.Clear();
+
+            foreach (var component in registeredComponents)
+            {
+                var connected = new HashSet<Component>();
+
+                // From component-level pin adjacencies
+                foreach (var kv in component.AdjacencyList)        // kv: pinIndex -> List<Component2>
+                {
+                    var list = kv.Value;
+                    if (list == null) continue;
+                    foreach (var n in list)
+                    {
+                        if (n != null && n != component)
+                            connected.Add(n);
+                    }
+                }
+
+                // From board-level logicalConnections (grid cell pairs)
+                foreach (var connection in logicalConnections)
+                {
+                    var a = connection.Item1;
+                    var b = connection.Item2;
+
+                    if (componentsGrid.TryGetValue(a, out var compA) &&
+                        componentsGrid.TryGetValue(b, out var compB))
+                    {
+                        if (ReferenceEquals(compA, component) && !ReferenceEquals(compB, component))
+                            connected.Add(compB);
+                        else if (ReferenceEquals(compB, component) && !ReferenceEquals(compA, component))
+                            connected.Add(compA);
+                    }
+                }
+
+                if (connected.Count > 0)
+                    AdjacencyList[component] = new List<Component>(connected);
+            }
+        }
     }
 
 }

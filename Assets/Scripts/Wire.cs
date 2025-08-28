@@ -8,7 +8,7 @@ public class Wire : MonoBehaviour
     public static void Connect((int row, int col) a, (int row, int col) b, string ID, Breadboard board, string type)
     {
         // Create a unique label for each wire instance
-        var wire = new Component(ID);
+        var wire = new Component2(ID);
 
         switch (type)
         {

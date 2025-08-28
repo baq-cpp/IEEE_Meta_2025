@@ -42,8 +42,8 @@ namespace breadboard
             Wire.Connect(board.Vcc[6], xorGate.PinPositions[2], "A", board, "I");
 
             // Build adjacency lists AFTER all wires are connected
-            andGate.CreateAdjacencyList(board);
-            xorGate.CreateAdjacencyList(board);
+            //andGate.CreateAdjacencyList(board);
+            //xorGate.CreateAdjacencyList(board);
             board.BuildAdjacencyList();
 
             // Display breadboard and connections
