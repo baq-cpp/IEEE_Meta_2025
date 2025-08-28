@@ -13,13 +13,19 @@ public class OpenMenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        foreach (GameObject menu in otherMenus)
+        {
+            menu.SetActive(false);
+        }
+
+        firstMenu.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(showButton.action.WasPressedThisFrame() && !AnyOtherMenusOpen())
+        if (showButton.action.WasPressedThisFrame() && !AnyOtherMenusOpen())
         {
             ToggleFirstMenu();
         }
@@ -42,6 +48,4 @@ public class OpenMenuManager : MonoBehaviour
     {
         firstMenu.SetActive(!firstMenu.activeSelf);
     }
-
-
 }

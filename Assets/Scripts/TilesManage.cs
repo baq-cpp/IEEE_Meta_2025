@@ -128,7 +128,7 @@ public class TilesManage : MonoBehaviour
 
 
         }
-        //DisplayPins();
+        DisplayPins();
         DisplayConnections();
         
 
