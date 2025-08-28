@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -46,7 +47,7 @@ private void OnSocketed(SelectEnterEventArgs args)
         Debug.Log($"{socketCoordName},{insertedObj}");
 
         TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));/////////////////////
-
+        Breadboard.Instance.PlaceComponent(Component2.ParseOrderedPair(insertedObj.name).Item1,Component2.ParseOrderedPair(insertedObj.name).Item2, new Component2(insertedObj,Component2.ParseOrderedPair(socketCoordName).Item1,Component2.ParseOrderedPair(socketCoordName).Item2,Breadboard.Instance));
         _hintManager.OnComponentInteracted(insertedObj.name); //This interacts with TextHintManager to push component into stack
 
         //Debug.Log($"Socket {socketCoordName} now socketed with {insertedObjCoordName}");
@@ -56,7 +57,7 @@ private void OnSocketed(SelectEnterEventArgs args)
             socketCollider.isTrigger = true;
 
     TilesManage.Instance.IncrementSocketUsage(socketObj);
-
+    
     // Turn off trigger again 
         if (socketCollider != null)
             socketCollider.isTrigger = false;

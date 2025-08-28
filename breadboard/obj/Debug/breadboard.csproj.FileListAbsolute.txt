@@ -1,0 +1,8 @@
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.csproj.AssemblyReference.cache
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.csproj.CoreCompileInputs.cache
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\bin\Debug\breadboard.exe.config
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\bin\Debug\breadboard.exe
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\bin\Debug\breadboard.pdb
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.exe
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.pdb
+C:\Users\alanh\Documents\GitHub\IEEE_Meta_2025\breadboard\obj\Debug\breadboard.exe.config
