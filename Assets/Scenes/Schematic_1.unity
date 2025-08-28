@@ -385,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 790351876655619515, guid: d9b31f05c098e9e428b095ea9c2945dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1.625
       objectReference: {fileID: 0}
     - target: {fileID: 790351876655619515, guid: d9b31f05c098e9e428b095ea9c2945dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -459,7 +459,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3586328067807365060, guid: d9b31f05c098e9e428b095ea9c2945dc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1958,7 +1959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &907267691
 Transform:
   m_ObjectHideFlags: 0
@@ -2066,9 +2067,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 907267691}
     m_Modifications:
+    - target: {fileID: 760285011401920827, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_text
+      value: Component-Based Hints
+      objectReference: {fileID: 0}
     - target: {fileID: 1441778515942589928, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 12.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448691001009543397, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448691001009543397, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448691001009543397, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1311998837}
+    - target: {fileID: 2448691001009543397, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448691001009543397, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnGetHintClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448691001009543397, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TextHintManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448691001009543397, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3311721715882515299, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2141,6 +2174,10 @@ PrefabInstance:
     - target: {fileID: 4520326922084690308, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnGetHint
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661522533650770505, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
+      propertyPath: m_Name
+      value: ComponentBasedButton
       objectReference: {fileID: 0}
     - target: {fileID: 6706953022204349055, guid: fc7c38757fd95f340b3003796ba3b102, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2292,6 +2329,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 907267691}
     m_Modifications:
+    - target: {fileID: 479343542522765251, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 162.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 479343542522765251, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 77.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 479343542522765251, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 479343542522765251, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45.96
+      objectReference: {fileID: 0}
     - target: {fileID: 3605079618982115734, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2330,7 +2383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6238482663661620347, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1.625
       objectReference: {fileID: 0}
     - target: {fileID: 6238482663661620347, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2371,6 +2424,14 @@ PrefabInstance:
     - target: {fileID: 7991005780859207706, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733536168295001218, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733536168295001218, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2572,6 +2633,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5988362882292387256, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
   m_PrefabInstance: {fileID: 1984953413}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1311998837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+  m_PrefabInstance: {fileID: 1984953413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52376da82c448543814626031b245e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1330712708 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3605079618982115734, guid: 61f3f701d41592146ae84617b3eb0dec, type: 3}
@@ -3781,6 +3853,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1330712708}
     - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: hintsDatabase.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
       propertyPath: componentColors.Array.data[1].color.b
       value: 0
       objectReference: {fileID: 0}
@@ -3841,6 +3921,14 @@ PrefabInstance:
       value: 0.83574355
       objectReference: {fileID: 0}
     - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[0].componentType
+      value: Breadboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[1].componentType
+      value: Jumper Wires
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
       propertyPath: componentColors.Array.data[1].componentType
       value: LED
       objectReference: {fileID: 0}
@@ -3861,17 +3949,100 @@ PrefabInstance:
       value: Jumper Wires
       objectReference: {fileID: 0}
     - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[0].hints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[1].hints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: hintsDatabase.Array.data[5].hints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: hintsDatabase.Array.data[0].objectNames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: hintsDatabase.Array.data[1].objectNames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: hintsDatabase.Array.data[2].objectNames.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: hintsDatabase.Array.data[3].objectNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[0].hints.Array.data[0].text
+      value: Each set of rows on the breadboard is connected internally, as shown
+        with the vertical green lines. The power rails on the top and bottom of the
+        breadboard also have internal connections, as shown with the horizontal green
+        lines.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[1].hints.Array.data[0].text
+      value: Jumper wires provide a connection component-to-component on the breadboard.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[0].hints.Array.data[0].image
+      value: 
+      objectReference: {fileID: 21300000, guid: 47e69c0d565e95844b6dc05ae30febc6, type: 3}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: initialHints.Array.data[1].hints.Array.data[0].image
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
       propertyPath: hintsDatabase.Array.data[0].hints.Array.data[0].image
       value: 
       objectReference: {fileID: 21300000, guid: 7ea8dd937638f814088d4925c79f925c, type: 3}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[0].objectNames.Array.data[0]'
+      value: Resistor_330
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[0].objectNames.Array.data[1]'
+      value: Resistor_1k
+      objectReference: {fileID: 0}
     - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
       propertyPath: hintsDatabase.Array.data[1].hints.Array.data[0].image
       value: 
       objectReference: {fileID: 21300000, guid: 910ec53e50bd0514d97ec0ce74df4577, type: 3}
     - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[1].objectNames.Array.data[0]'
+      value: LED_Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[1].objectNames.Array.data[1]'
+      value: LED_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[2].objectNames.Array.data[0]'
+      value: NOT
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[2].objectNames.Array.data[1]'
+      value: AND
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[2].objectNames.Array.data[2]'
+      value: OR
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[2].objectNames.Array.data[3]'
+      value: XOR
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
       propertyPath: hintsDatabase.Array.data[3].hints.Array.data[0].image
       value: 
       objectReference: {fileID: 21300000, guid: 49142c4c3d0fd2e4eb6de5e356b097a5, type: 3}
+    - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
+      propertyPath: 'hintsDatabase.Array.data[3].objectNames.Array.data[0]'
+      value: DIP Switch Body
+      objectReference: {fileID: 0}
     - target: {fileID: 6453900342726670463, guid: f19b36338a9972e42bfa1143368e2237, type: 3}
       propertyPath: hintsDatabase.Array.data[4].hints.Array.data[0].image
       value: 
@@ -6547,7 +6718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8315056245939922683}
   - component: {fileID: 5753438028076323202}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8013,7 +8184,7 @@ GameObject:
   - component: {fileID: 4128966063060122931}
   - component: {fileID: 8326490428115291711}
   - component: {fileID: 3688835905534964195}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8315,7 +8486,7 @@ Transform:
   m_GameObject: {fileID: 4067901425367783726}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12136,7 +12307,7 @@ GameObject:
   - component: {fileID: 7700312695335864581}
   - component: {fileID: 8050139576583076786}
   - component: {fileID: 4590510868918868903}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Grab Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12517,6 +12688,7 @@ GameObject:
   - component: {fileID: 4921994777077059079}
   - component: {fileID: 8242399555779788827}
   - component: {fileID: 5153419960563233666}
+  - component: {fileID: 8242399555779788828}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13334,7 +13506,7 @@ GameObject:
   - component: {fileID: 6600409088383749936}
   - component: {fileID: 8876904408949442603}
   - component: {fileID: 183741437706756694}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Locomotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14024,7 +14196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6823839950601139568}
   - component: {fileID: 1326489341395080129}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Teleportation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15513,7 +15685,7 @@ GameObject:
   - component: {fileID: 8776938155973611510}
   - component: {fileID: 8776938155973611509}
   m_Layer: 0
-  m_Name: LED_Green
+  m_Name: LED 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16803,7 +16975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7209656800900378391}
   - component: {fileID: 7926890914671280022}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Climb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18308,7 +18480,7 @@ GameObject:
   - component: {fileID: 7645572860354836289}
   - component: {fileID: 7645572860354836288}
   m_Layer: 0
-  m_Name: LED_Red
+  m_Name: LED 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19210,7 +19382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7601872201098427223}
   - component: {fileID: 4720094387333718169}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Gravity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20406,7 +20578,7 @@ GameObject:
   - component: {fileID: 732937623546929222}
   - component: {fileID: 8510571370958440166}
   - component: {fileID: 6905180065093500262}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Turn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22853,6 +23025,50 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4067901425367783726}
   m_Enabled: 1
+--- !u!114 &8242399555779788828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067901425367783726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!4 &8244281439946486989
 Transform:
   m_ObjectHideFlags: 0
@@ -23637,7 +23853,7 @@ GameObject:
   - component: {fileID: 6567028584392541859}
   - component: {fileID: 7510081653402804988}
   m_Layer: 0
-  m_Name: DIP Switch Body
+  m_Name: SWITCH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24744,7 +24960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2879991426109422555}
   - component: {fileID: 3636150512523908914}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24762,7 +24978,7 @@ GameObject:
   - component: {fileID: 5375080638481938803}
   - component: {fileID: 3116027864287405546}
   - component: {fileID: 6922758339919918525}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Climb Teleport
   m_TagString: Untagged
   m_Icon: {fileID: 0}

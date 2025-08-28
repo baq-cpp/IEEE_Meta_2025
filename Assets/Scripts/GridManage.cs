@@ -54,7 +54,17 @@ public class GridManage : MonoBehaviour
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_gridOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
-                sphere.name = $"{y},{x}";
+                //sphere.name = $"({x},{y})";
+
+                //if (x >= 0) sphere.name = $"{x + 2},{y}";
+
+                //if (x >= 10)sphere.name = $"{x+6},{y}";
+                if (x >= 10)
+                    sphere.name = $"{x + 6},{y}";
+                else if (x >= 0)
+                    sphere.name = $"{x + 2},{y}";
+                else
+                    sphere.name = $"({x},{y})";
 
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
                 Tiles tiles = sphere.GetComponent<Tiles>();
@@ -99,7 +109,7 @@ public class GridManage : MonoBehaviour
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_RailOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
-                sphere.name = $"{y},{x}";
+                sphere.name = $"({x},{y})";
 
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
                 Tiles tiles = sphere.GetComponent<Tiles>();

@@ -9,7 +9,10 @@ public class TileSocketListener : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket;
 private Collider socketCollider;
 
-void Awake()
+    private TextHintManager _hintManager;
+
+
+    void Awake()
 {
     socket = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor>();
     socket.selectEntered.AddListener(OnSocketed);
@@ -20,7 +23,11 @@ void Awake()
     {
         Debug.LogWarning("No Collider found on the socket GameObject.");
     }
-}
+
+        _hintManager = FindFirstObjectByType<TextHintManager>();
+        if (_hintManager == null)
+            Debug.LogError("TextHintManager not found in scene!");
+    }
 
 void OnDestroy()
 {
@@ -41,7 +48,9 @@ private void OnSocketed(SelectEnterEventArgs args)
 
         TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));/////////////////////
         Breadboard.Instance.PlaceComponent(Component2.ParseOrderedPair(insertedObj.name).Item1,Component2.ParseOrderedPair(insertedObj.name).Item2, new Component2(insertedObj,Component2.ParseOrderedPair(socketCoordName).Item1,Component2.ParseOrderedPair(socketCoordName).Item2,Breadboard.Instance));
-    //Debug.Log($"Socket {socketCoordName} now socketed with {insertedObjCoordName}");
+        _hintManager.OnComponentInteracted(insertedObj.name); //This interacts with TextHintManager to push component into stack
+
+        //Debug.Log($"Socket {socketCoordName} now socketed with {insertedObjCoordName}");
 
         // Enable trigger
         if (socketCollider != null)
