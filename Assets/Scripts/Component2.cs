@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-public class Component2 : MonoBehaviour
+public class Component2
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -366,15 +366,5 @@ public class Component2 : MonoBehaviour
     }
 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 }

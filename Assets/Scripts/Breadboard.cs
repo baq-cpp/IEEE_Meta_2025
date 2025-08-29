@@ -6,7 +6,7 @@ public class Breadboard : MonoBehaviour
 {
 
     public static Breadboard Instance;
-    public int Rows { get; }
+    public int Rows { get; } = 63;
     public int Columns
     {
         get { return columns; }
@@ -17,7 +17,8 @@ public class Breadboard : MonoBehaviour
         }
     }
 
-    private int columns;
+    public bool IsInitialized { get; private set; }
+    private int columns = 63;
     private string[,] grid;
 
     public List<(int row, int col)> Vcc { get; } = new List<(int row, int col)>();
@@ -33,11 +34,11 @@ public class Breadboard : MonoBehaviour
     public Dictionary<Component2, List<Component2>> AdjacencyList { get; private set; } =
         new Dictionary<Component2, List<Component2>>();
 
-    public Breadboard(int rows, int columns)
-    {
-        Rows = rows;
-        Columns = columns;
-    }
+    // public Breadboard(int rows, int columns)
+    // {
+    //     Rows = rows;
+    //     Columns = columns;
+    // }
 
     private void InitializeGrid()
     {
@@ -66,10 +67,17 @@ public class Breadboard : MonoBehaviour
                 grid[i, j] = cell;
             }
         }
+        
+        IsInitialized = true;
     }
 
     public void PlaceComponent(int row, int col, Component2 component)
     {
+         if (!IsInitialized)
+        {
+            Debug.LogError("[Breadboard] PlaceComponent called before initialization.");
+            return;
+        }
         if (IsValidPosition(row, col))
         {
             grid[row, col] = component.Label;
@@ -207,18 +215,23 @@ public class Breadboard : MonoBehaviour
     //}
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("[Breadboard] Duplicate instance; destroying this one.");
+            Destroy(gameObject);
+            return;
+        }
 
-        // DisplayConnections();
+        Instance = this;
+
+        // Initialize once here so the board is ready before user interactions.
+        InitializeGrid();
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        if (Instance == this) Instance = null;
     }
 }
