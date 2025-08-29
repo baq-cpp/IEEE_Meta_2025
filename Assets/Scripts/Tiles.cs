@@ -12,7 +12,9 @@ public enum BreadBoardSections
     }
 public class Tiles : MonoBehaviour
 {
-    // [SerializeField] private Color _baseColor, _OffsetColor; //creates assets in the inspector the different colors/materials
+
+    private bool isselected = false;
+   // [SerializeField] private Color _baseColor, _OffsetColor; //creates assets in the inspector the different colors/materials
     [SerializeField] private Renderer _renderer; //creates assets in the inspector what will color be added to
 
     [SerializeField] private GameObject _highlight;//creates assets in the inspector
@@ -46,12 +48,20 @@ public class Tiles : MonoBehaviour
 
     public void OnSelectEntered(SelectEnterEventArgs args)  //will set selected to red
     {
-        _Selected.SetActive(true);
+
+        isselected = !isselected;
+
+        _Selected.SetActive(isselected);
+
+        if (isselected)
+        {
+            TilesManage.Instance.TileSelected(gameObject);
+        }
 
 
-        _highlight.SetActive(false); //will deactivate the hover effect if item is selected
+        //_highlight.SetActive(false); //will deactivate the hover effect if item is selected
 
-        TilesManage.Instance.TileSelected(gameObject);
+       // TilesManage.Instance.TileSelected(gameObject);
 
 
 
@@ -59,8 +69,13 @@ public class Tiles : MonoBehaviour
 
     public void OnSelectExited(SelectExitEventArgs args)  //will take away selected effect
     {
-        _Selected.SetActive(false);
+       // _Selected.SetActive(false);
 
+    }
+
+    public void OnActivate(ActivateEventArgs args)
+    {
+        _Selected.SetActive(true);
     }
 
     void DisplayPins(HashSet<(GameObject, GameObject)> collection)
