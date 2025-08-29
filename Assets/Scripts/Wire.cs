@@ -8,11 +8,6 @@ public class Wire
     public static void Connect((int row, int col) a, (int row, int col) b, string ID, string type)
     {
         var board = Breadboard.Instance;
-        if (board == null)
-        {
-            Debug.LogError("[Wire.Connect] Breadboard.Instance is null.");
-            return;
-        }
         if (!board.IsInitialized)
         {
             Debug.LogError("[Wire.Connect] Breadboard not initialized yet.");
