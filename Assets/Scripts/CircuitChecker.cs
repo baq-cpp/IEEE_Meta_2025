@@ -1,18 +1,28 @@
 using UnityEngine;
-
-using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public class CircuitChecker : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    void Start()
+    public Button currentSelected;
+
+    public void OnButtonClick(Button clicked)
     {
+        // Unhighlight previous
+        if (currentSelected != null && currentSelected != clicked)
+            SetHighlight(currentSelected, false);
+
+        // Highlight new
         
+        currentSelected = clicked;
+        SetHighlight(currentSelected, true);
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetHighlight(Button btn, bool on)
     {
-        
+        var colors = btn.colors;
+        colors.normalColor = on ? colors.selectedColor : colors.disabledColor;  // or any color you choose
+        btn.colors = colors;
     }
 }

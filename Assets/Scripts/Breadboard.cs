@@ -155,7 +155,7 @@ public class Breadboard{
 
     public void DisplayGateConnections()
     {
-        Console.WriteLine("Component-to-Component Connections:\n");
+        Debug.Log("Component-to-Component Connections:\n");
 
         var seen = new HashSet<(Component2, Component2)>();
 
@@ -171,7 +171,7 @@ public class Breadboard{
 
                 if (seen.Contains(reversePair)) continue;
 
-                Console.WriteLine("{0} <--> {1}", component.Label, neighbor.Label);
+                Debug.Log($"{component.Label} <--> {neighbor.Label}");
                 seen.Add(pair);
             }
         }
