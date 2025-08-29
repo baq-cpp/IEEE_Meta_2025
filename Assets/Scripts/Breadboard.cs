@@ -81,6 +81,39 @@ public class Breadboard{
         }
     }
 
+    public bool UnplaceAt(int row, int col)
+    {
+        if (!IsInitialized) return false;
+        if (!IsValidPosition(row, col)) return false;
+
+        // If nothing there, nothing to do
+        if (!componentsGrid.Remove((row, col))) return false;
+
+        // Reset the visible text
+        if (Vcc.Contains((row, col))) grid[row, col] = "VCC";
+        else if (Gnd.Contains((row, col))) grid[row, col] = "GND";
+        else grid[row, col] = "[]";
+
+        return true;
+    }
+
+    public int UnplaceComponent(Component2 component)
+    {
+        if (!IsInitialized || component == null) return 0;
+
+        var toRemove = new List<(int, int)>();
+        foreach (var kv in componentsGrid)
+            if (ReferenceEquals(kv.Value, component))
+                toRemove.Add(kv.Key);
+
+        int count = 0;
+        foreach (var (r, c) in toRemove)
+            if (UnplaceAt(r, c)) count++;
+
+        return count;
+    }
+
+
     public bool IsOccupied(int row, int col)
     {
         return componentsGrid.ContainsKey((row, col));
