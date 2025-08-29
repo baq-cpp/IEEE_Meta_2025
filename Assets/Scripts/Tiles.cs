@@ -79,6 +79,7 @@ public class Tiles : MonoBehaviour
 
     void DisplayPins(HashSet<(GameObject, GameObject)> collection)
     {
+        
         string output = "{";
         foreach (var pair in collection)
         {

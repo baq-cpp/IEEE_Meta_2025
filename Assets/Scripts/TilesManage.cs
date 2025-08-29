@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.Search;
+
 
 public class TilesManage : MonoBehaviour
 {
@@ -20,9 +22,14 @@ public class TilesManage : MonoBehaviour
 
     public HashSet<(GameObject, GameObject)> Pins = new HashSet<(GameObject, GameObject)>();
 
+
+    // just wires
     private Dictionary<(GameObject, GameObject), GameObject> _PinLines = new Dictionary<(GameObject, GameObject), GameObject>();/////////
 
+    //first point and the name of component
     private Dictionary<GameObject, int> _SocketUsage = new Dictionary<GameObject, int>();////////////////////////////////
+
+    //lines and sockets for wires 
 
     public HashSet<(string, string)> _Connections = new HashSet<(string, string)>();
 
@@ -30,7 +37,10 @@ public class TilesManage : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        // DisplayConnections();
     }
+
 
     public (string, string) GetOrderedPair(string a, string b)
     {
@@ -72,6 +82,7 @@ public class TilesManage : MonoBehaviour
                 Pins.Add(pair);
                 //Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
                 _Connections.Add(GetOrderedPair(_FirstSelected.name, _SecondSelected.name));////////////////////////
+                Wire.Connect(Component2.ParseOrderedPair(_FirstSelected.name), Component2.ParseOrderedPair(_SecondSelected.name), _FirstSelected.name + _SecondSelected.name, "G2G");
 
                 GameObject newline = Instantiate(_linePrefab);
                 LineRenderer lineRenderer = newline.GetComponent<LineRenderer>();
@@ -164,6 +175,7 @@ public class TilesManage : MonoBehaviour
 
     private void DisplayPins()
     {
+        
         string output = "Pins: {";
 
         foreach (var pair in Pins)

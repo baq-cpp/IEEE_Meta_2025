@@ -27,9 +27,9 @@ namespace MultiPaster
                             Undo.AddComponent(objs, componentType);
                             
 
-                            Component[] targetComponents = objs.GetComponents(componentType);
+                            // Component[] targetComponents = objs.GetComponents(componentType);
 
-                            UnityEditorInternal.ComponentUtility.PasteComponentValues(targetComponents[targetComponents.Length - 1]);
+                            // UnityEditorInternal.ComponentUtility.PasteComponentValues(targetComponents[targetComponents.Length - 1]);
 
                             EditorUtility.SetDirty(objs);
                         }
