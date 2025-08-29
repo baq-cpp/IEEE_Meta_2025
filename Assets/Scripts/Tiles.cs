@@ -23,14 +23,15 @@ public class Tiles : MonoBehaviour
 
     private List<GameObject> _coordinates = new List<GameObject>();
 
-    public BreadBoardSections sectionType;
+    public int Row { get; private set; }
+    public int Col { get; private set; }
 
 
     public void Init(bool isOffset)
     {
-       // _renderer.material.color = isOffset ? _OffsetColor : _baseColor; // makes the spheres alternate colors
+        // _renderer.material.color = isOffset ? _OffsetColor : _baseColor; // makes the spheres alternate colors
     }
-    
+
     public void OnHoverEntered(HoverEnterEventArgs args) // makes white box appear when hovering
     {
         //Debug.Log("Hover Entered"); //used to test if method is firing
@@ -79,7 +80,7 @@ public class Tiles : MonoBehaviour
 
     void DisplayPins(HashSet<(GameObject, GameObject)> collection)
     {
-        
+
         string output = "{";
         foreach (var pair in collection)
         {
@@ -90,5 +91,11 @@ public class Tiles : MonoBehaviour
         output += " }";
 
         Debug.Log(output);
+    }
+    
+    public void SetCoords(int row, int col)
+    {
+        Row = row;
+        Col = col;
     }
 }
