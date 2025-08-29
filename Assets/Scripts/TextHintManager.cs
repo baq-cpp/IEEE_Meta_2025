@@ -123,7 +123,7 @@ public class TextHintManager : MonoBehaviour
             resolvedType = "IC";
         }
 
-        else if (objectName == "Resistor_330" || objectName == "Resistor_1k")
+        else if (objectName == "R330" || objectName == "R1000")
         {
             resolvedType = "Resistor";
         }
