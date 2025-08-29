@@ -2,53 +2,47 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Breadboard : MonoBehaviour
-{
+public class Breadboard{
 
-    public static Breadboard Instance;
-    public int Rows { get; } = 63;
-    public int Columns
-    {
-        get { return columns; }
-        set
-        {
-            columns = value;
-            InitializeGrid();
-        }
-    }
-
+    private static Breadboard _instance;
+    public static Breadboard Instance => _instance ??= new Breadboard();
+    public int Rows { get; private set; } = 63;
+    public int Columns { get; private set; } = 28;
     public bool IsInitialized { get; private set; }
-    private int columns = 63;
+
     private string[,] grid;
 
-    public List<(int row, int col)> Vcc { get; } = new List<(int row, int col)>();
-    public List<(int row, int col)> Gnd { get; } = new List<(int row, int col)>();
+    public List<(int row, int col)> Vcc { get; } = new();
+    public List<(int row, int col)> Gnd { get; } = new();
 
-    private Dictionary<(int row, int col), Component2> componentsGrid =
-        new Dictionary<(int row, int col), Component2>();
+    private readonly Dictionary<(int row, int col), Component2> componentsGrid = new();
+    private readonly List<Component2> registeredComponents = new();
+    private readonly List<((int row, int col), (int row, int col))> logicalConnections = new();
 
-    private List<Component2> registeredComponents = new List<Component2>();
-    private List<((int row, int col), (int row, int col))> logicalConnections =
-        new List<((int row, int col), (int row, int col))>();
+    public Dictionary<Component2, List<Component2>> AdjacencyList { get; private set; } = new();
 
-    public Dictionary<Component2, List<Component2>> AdjacencyList { get; private set; } =
-        new Dictionary<Component2, List<Component2>>();
+    // Private constructor — only Instance can create
+    private Breadboard()
+    {
+        InitializeGrid();
+    }
+
+    
 
     // public Breadboard(int rows, int columns)
     // {
     //     Rows = rows;
     //     Columns = columns;
     // }
-
-    private void InitializeGrid()
+        private void InitializeGrid()
     {
-        grid = new string[Rows, columns];
+        grid = new string[Rows, Columns];
         Vcc.Clear();
         Gnd.Clear();
 
         for (int i = 0; i < Rows; i++)
         {
-            for (int j = 0; j < columns; j++)
+            for (int j = 0; j < Columns; j++)
             {
                 string cell = "[]"; // default filler
 
@@ -67,7 +61,6 @@ public class Breadboard : MonoBehaviour
                 grid[i, j] = cell;
             }
         }
-        
         IsInitialized = true;
     }
 
@@ -150,7 +143,6 @@ public class Breadboard : MonoBehaviour
 
     public void Display()
     {
-        const int cellWidth = 4;
         for (int i = 0; i < Rows; i++)
         {
             for (int j = 0; j < Columns; j++)
@@ -215,23 +207,19 @@ public class Breadboard : MonoBehaviour
     //}
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Debug.LogWarning("[Breadboard] Duplicate instance; destroying this one.");
-            Destroy(gameObject);
-            return;
-        }
+    // private void Awake()
+    // {
+    //     if (Instance != null && Instance != this)
+    //     {
+    //         Debug.LogWarning("[Breadboard] Duplicate instance; destroying this one.");
+    //         Destroy(gameObject);
+    //         return;
+    //     }
 
-        Instance = this;
+    //     Instance = this;
 
-        // Initialize once here so the board is ready before user interactions.
-        InitializeGrid();
-    }
-
-    private void OnDestroy()
-    {
-        if (Instance == this) Instance = null;
-    }
+    //     // Initialize once here so the board is ready before user interactions.
+    //     InitializeGrid();
+    
+    
 }
