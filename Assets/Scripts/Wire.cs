@@ -1,66 +1,72 @@
 using UnityEngine;
 using System;
 
-public class Wire : MonoBehaviour
+public class Wire
 {
 
 
-    public static void Connect((int row, int col) a, (int row, int col) b, string ID, Breadboard board, string type)
+    public static void Connect((int row, int col) a, (int row, int col) b, string ID, string type)
     {
-        // Create a unique label for each wire instance
+        var board = Breadboard.Instance;
+        if (board == null)
+        {
+            Debug.LogError("[Wire.Connect] Breadboard.Instance is null.");
+            return;
+        }
+        if (!board.IsInitialized)
+        {
+            Debug.LogError("[Wire.Connect] Breadboard not initialized yet.");
+            return;
+        }
+
         var wire = new Component2(ID);
 
         switch (type)
         {
-            case "I": // Input wire
-            case "G": // GND wire
+            case "I":
+            case "G":
                 {
+                    var bLeft = (b.row, col: b.col - 1);
+                    if (!In(board, a) || !In(board, bLeft))
+                    {
+                        Debug.LogError($"[Wire.Connect] I/G OOB. a=({a.row},{a.col}) b-1=({bLeft.row},{bLeft.col})");
+                        return;
+                    }
                     board.PlaceComponent(a.row, a.col, wire);
-
-                    board.PlaceComponent(b.row, b.col - 1, wire);
-
-
+                    board.PlaceComponent(bLeft.row, bLeft.col, wire);
                     board.AddLogicalConnection(a, b);
                     break;
                 }
-
-            case "P": // Power wire
+            case "P":
                 {
+                    var bRight = (b.row, col: b.col + 1);
+                    if (!In(board, a) || !In(board, bRight))
+                    {
+                        Debug.LogError($"[Wire.Connect] P OOB. a=({a.row},{a.col}) b+1=({bRight.row},{bRight.col})");
+                        return;
+                    }
                     board.PlaceComponent(a.row, a.col, wire);
-                    board.PlaceComponent(b.row, b.col + 1, wire);
-
+                    board.PlaceComponent(bRight.row, bRight.col, wire);
                     board.AddLogicalConnection(a, b);
                     break;
                 }
-
-            case "G2G": // Gate-to-Gate wire
+            case "G2G":
                 {
-                    // Place wires offset from each pin
-                    //int colA = a.col < board.Columns / 2 ? a.col + 1 : a.col - 1;
-                    //int colB = b.col < board.Columns / 2 ? b.col + 1 : b.col - 1;
-
-                    board.PlaceComponent(a.row, a.col - 1, wire);
-                    board.PlaceComponent(b.row, b.col - 1, wire);
-
+                    if (!In(board, a) || !In(board, b))
+                    {
+                        Debug.LogError($"[Wire.Connect] G2G OOB. a=({a.row},{a.col}) b=({b.row},{b.col})");
+                        return;
+                    }
+                    board.PlaceComponent(a.row, a.col, wire);
+                    board.PlaceComponent(b.row, b.col, wire);
                     board.AddLogicalConnection(a, b);
                     break;
                 }
-
             default:
-                throw new ArgumentException($"Unknown wire type: {type}");
+                Debug.LogError($"[Wire.Connect] Unknown type '{type}'.");
+                break;
         }
-
-
- }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+     private static bool In(Breadboard board, (int row, int col) p)
+        => p.row >= 0 && p.row < board.Rows && p.col >= 0 && p.col < board.Columns;
 }
