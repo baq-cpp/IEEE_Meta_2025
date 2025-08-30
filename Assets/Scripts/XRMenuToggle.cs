@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public class XRMenuToggle : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private InputActionProperty menuAction;
-    // Drag "XRI LeftHand Interaction/Menu" here in the Inspector
 
     private bool isOpen;
 

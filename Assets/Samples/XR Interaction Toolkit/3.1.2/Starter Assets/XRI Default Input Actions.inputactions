@@ -984,6 +984,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Y button",
+                    "type": "Button",
+                    "id": "5bdbf02f-caf6-47ed-9d8a-baf085de87ca",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1303,6 +1312,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2aab8a07-65ec-4afb-a00a-b49be4b577f3",
+                    "path": "<XRInputV1::Oculus::MetaQuestProTouchControllerOpenXR>{LeftHand}/secondarybutton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Y button",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
