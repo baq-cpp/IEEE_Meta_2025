@@ -72,7 +72,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_Handedness: 0
-  m_AttachTransform: {fileID: 9141351750243199446}
+  m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 0
   m_StartingSelectedInteractable: {fileID: 0}
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 0
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 7b26add94f09dc44fb811013f007a3aa, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
-  m_InteractableHoverScale: 1
+  m_InteractableHoverScale: 0.3
   m_RecycleDelayTime: 1
   m_HoverSocketSnapping: 1
   m_SocketSnappingRadius: 0.006
@@ -505,8 +505,8 @@ MonoBehaviour:
     m_Bits: 1
   m_Handedness: 0
   m_AttachTransform: {fileID: 0}
-  m_KeepSelectedTargetValid: 1
-  m_DisableVisualsWhenBlockedInGroup: 1
+  m_KeepSelectedTargetValid: 0
+  m_DisableVisualsWhenBlockedInGroup: 0
   m_StartingSelectedInteractable: {fileID: 0}
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
@@ -524,8 +524,8 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 7a723ecfb519e7945a7fa67bed0a57f1, type: 2}
-  m_InteractableCantHoverMeshMaterial: {fileID: 2100000, guid: 7a723ecfb519e7945a7fa67bed0a57f1, type: 2}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 7b26add94f09dc44fb811013f007a3aa, type: 2}
+  m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
   m_InteractableHoverScale: 0.015
   m_RecycleDelayTime: 1
@@ -549,7 +549,6 @@ MonoBehaviour:
   _renderer: {fileID: 2708368870501896765}
   _highlight: {fileID: 6566433566565885620}
   _Selected: {fileID: 7731335583352804798}
-  sectionType: 0
 --- !u!114 &5224158417203455354
 MonoBehaviour:
   m_ObjectHideFlags: 0
