@@ -4,35 +4,21 @@ using System.Collections.Generic;
 public class DipSwitch : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private bool isselected = false;
+    private bool isOn = false;
+    private Quaternion onRotation;
+    private Quaternion offRotation;
 
-    public void OnSelectEntered(SelectEnterEventArgs args)  
+    private void Start()
     {
-
-        isselected = !isselected;
-
-        Vector3 pos = transform.localPosition;
-
-        if (isselected)
-        {
-            pos.z -= -.00183f;
-        }
-        transform.localPosition = pos;
-
-
-       
-
-
-
-    }
-    void Start()
-    {
-        
+        // Store the ON and OFF rotations
+        offRotation = transform.localRotation;
+        onRotation = Quaternion.Euler(transform.localEulerAngles + new Vector3(-20, 0, 0)); // tweak as needed
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Toggle()
     {
-        
+        isOn = !isOn;
+        transform.localRotation = isOn ? onRotation : offRotation;
+        Debug.Log("Switch is now: " + (isOn ? "ON" : "OFF"));
     }
 }
