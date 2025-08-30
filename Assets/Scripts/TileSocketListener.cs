@@ -66,11 +66,16 @@ private void OnSocketed(SelectEnterEventArgs args)
     {
         GameObject socketObj = gameObject;
         GameObject removedObj = args.interactableObject.transform.gameObject;
-
+        
         string socketCoordName = transform.parent != null ? transform.parent.name : gameObject.name;
         string insertedObjCoordName = removedObj.name;
         (int, int) socketCoordParsed = Component2.ParseOrderedPair(socketCoordName);
-        // Breadboard.Instance.UnplaceAt(socketCoordParsed.Item1,socketCoordParsed.Item2);
+
+    // Get the exact Component2 at this socket and unplace by instance
+    if (Breadboard.Instance.TryGetComponentAt(socketCoordParsed, out var comp))
+    {
+        Breadboard.Instance.UnplaceComponent(comp);
+    } 
         
 
 
