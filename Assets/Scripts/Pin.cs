@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Pin : MonoBehaviour
+public class Pin
 {
     public enum Direction { In, Out }
     public Component2 Owner { get; set; }
@@ -20,16 +20,5 @@ public class Pin : MonoBehaviour
         Owner = owner;
         Index = index;
         Dir = dir;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
