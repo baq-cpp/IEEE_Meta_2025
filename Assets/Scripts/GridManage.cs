@@ -107,12 +107,11 @@ public class GridManage : MonoBehaviour
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_RailOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
-                if (x >= 6)
-                    sphere.name = $"{y},{x + 20}";
-                else if (x >= 2)
-                    sphere.name = $"{y},{x + 18}";
-                else
-                    sphere.name = $"{y},{x + 16}";
+                sphere.name = $"({y},{x})";
+
+                if (x >= 2) sphere.name = $"{y},{x + 10}";
+                if (x >= 6) sphere.name = $"{y},{x + 20}";
+
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
                 Tiles tiles = sphere.GetComponent<Tiles>();
                 tiles.Init(isOffset);
