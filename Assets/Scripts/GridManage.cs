@@ -12,7 +12,7 @@ public class GridManage : MonoBehaviour
 
     [SerializeField] private Vector3 _RailOffset = Vector3.zero;//change to start rails at set coordinates
     
-
+    
          
 
 
@@ -54,11 +54,11 @@ public class GridManage : MonoBehaviour
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_gridOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
-                //sphere.name = $"({x},{y})";
+                    //sphere.name = $"({x},{y})";
 
-                //if (x >= 0) sphere.name = $"{x + 2},{y}";
+                    //if (x >= 0) sphere.name = $"{x + 2},{y}";
 
-                //if (x >= 10)sphere.name = $"{x+6},{y}";
+                    //if (x >= 10)sphere.name = $"{x+6},{y}";
                 if (x >= 10)
                     sphere.name = $"{y},{x + 6}";
                 else if (x >= 0)
@@ -77,9 +77,7 @@ public class GridManage : MonoBehaviour
         }
 
 
-
-
-        for (int x = 0; x < _RailsWidth; x++)
+         for (int x = 0; x < _RailsWidth; x++)
         {
             for (int y = 0; y < _RailsHeight; y++)
             {
@@ -105,7 +103,7 @@ public class GridManage : MonoBehaviour
                 {
                     Ypos += groupCount * 0.0188f; // adjust gap per group 0.02700 0.04986
                 }
-
+                
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_RailOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
@@ -119,8 +117,6 @@ public class GridManage : MonoBehaviour
                 tiles.Init(isOffset);
             }
         }
-
-    
 
 
        

@@ -65,7 +65,7 @@ public class Component2
                     throw new InvalidOperationException(
                         string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
                                     Label, p.row, p.col));
-                board.PlaceComponent(p.row, p.col, this);
+                PlaceWithLog(board, row, col);
             }
         }
         else if (Label == "SWITCH")
@@ -99,7 +99,7 @@ public class Component2
                     throw new InvalidOperationException(
                         string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
                                     Label, p.row, p.col));
-                board.PlaceComponent(p.row, p.col, this);
+                PlaceWithLog(board, row, col);
             }
         }
         else if (Label == "R330" || Label == "R1000")
@@ -109,8 +109,8 @@ public class Component2
             displayPins = new (int, int)[pinCount];
             Pins[0] = new Pin(this, 0, Pin.Direction.In);
             Pins[1] = new Pin(this, 1, Pin.Direction.Out);
-            board.PlaceComponent(row, col, this);
-            board.PlaceComponent(row, col + 5, this); // Resistor spans two columns
+            PlaceWithLog(board, row, col);
+            PlaceWithLog(board, row, col + 5);// Resistor spans two columns
         }
         else if (Label == "LED")
         {
@@ -118,7 +118,7 @@ public class Component2
             displayPins = new (int, int)[pinCount];
             Pins[0] = new Pin(this, 0, Pin.Direction.In);
             Pins[1] = new Pin(this, 1, Pin.Direction.Out);
-            board.PlaceComponent(row, col, this);
+            PlaceWithLog(board, row, col);
 
         }
         else
@@ -157,7 +157,7 @@ public class Component2
                     throw new InvalidOperationException(
                         string.Format("Cannot place {0} gate: position ({1},{2}) is already occupied.",
                                     Label, p.row, p.col));
-                board.PlaceComponent(p.row, p.col, this);
+                PlaceWithLog(board, p.row, p.col);
             }
         }
              
@@ -282,10 +282,10 @@ public class Component2
             Label = label;
         }
 
-        public Component2(string label, int pinCount, int value)
+        private void PlaceWithLog(Breadboard board, int row, int col)
         {
-            
-            
+            board.PlaceComponent(row, col, this);
+            // UnityEngine.Debug.Log($"Placed {Label} at ({row},{col})");
         }
 
         private bool IsOutputPin(int pinNumber)
@@ -352,17 +352,17 @@ public class Component2
     public static (int row, int col) ParseOrderedPair(string pair)
     {
     
-    // Split by comma
-    string[] parts = pair.Split(',');
+        // Split by comma
+        string[] parts = pair.Split(',');
 
-    if (parts.Length != 2)
-        throw new System.ArgumentException($"Invalid pair format: {pair}");
+        if (parts.Length != 2)
+            throw new System.ArgumentException($"Invalid pair format: {pair}");
 
-    // Parse row and col (handles leading zeros like "01")
-    int row = int.Parse(parts[0]);
-    int col = int.Parse(parts[1]);
+        // Parse row and col (handles leading zeros like "01")
+        int row = int.Parse(parts[0]);
+        int col = int.Parse(parts[1]);
 
-    return (row, col);
+        return (row, col);
     }
 
 
