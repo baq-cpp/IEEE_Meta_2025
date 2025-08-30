@@ -925,7 +925,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7b021d68ca896b4b90b2ed16454280d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3421c47c50483c40ad46330ce0665b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21235,6 +21235,7 @@ GameObject:
   - component: {fileID: 6878276038923401447}
   - component: {fileID: 3292507894592310072}
   - component: {fileID: 4370951915864870709}
+  - component: {fileID: 7462657855688768564}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -21242,6 +21243,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!65 &7462657855688768564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462657855688768563}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 0.25, z: 7}
+  m_Center: {x: 0, y: 2.625, z: 0}
 --- !u!4 &7474286276779685036
 Transform:
   m_ObjectHideFlags: 0
