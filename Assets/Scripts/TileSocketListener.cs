@@ -43,10 +43,9 @@ private void OnSocketed(SelectEnterEventArgs args)
     string socketCoordName = transform.parent != null ? transform.parent.name : gameObject.name;          
     string insertedObjCoordName = insertedObj.name;     
 
-    TilesManage.Instance.IncrementSocketUsage(socketObj);
         Debug.Log($"{socketCoordName},{insertedObj}");
     (int, int) socketCoordParsed = Component2.ParseOrderedPair(socketCoordName);
-        TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));/////////////////////
+        TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));
         Breadboard.Instance.PlaceComponent(socketCoordParsed.Item1,socketCoordParsed.Item2, new Component2(insertedObj,socketCoordParsed.Item1,socketCoordParsed.Item2,Breadboard.Instance));
         _hintManager.OnComponentInteracted(insertedObj.name); //This interacts with TextHintManager to push component into stack
 

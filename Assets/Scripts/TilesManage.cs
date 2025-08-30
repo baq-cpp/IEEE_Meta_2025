@@ -81,7 +81,7 @@ public class TilesManage : MonoBehaviour
             {
                 Pins.Add(pair);
                 //Debug.Log($"New Pin Added: ({_FirstSelected.name},{_SecondSelected.name})");
-                _Connections.Add(GetOrderedPair(_FirstSelected.name, _SecondSelected.name));////////////////////////
+                _Connections.Add(GetOrderedPair(_FirstSelected.name, _SecondSelected.name));
                 Wire.Connect(Component2.ParseOrderedPair(_FirstSelected.name), Component2.ParseOrderedPair(_SecondSelected.name), _FirstSelected.name + _SecondSelected.name, "G2G");
 
                 GameObject newline = Instantiate(_linePrefab);
