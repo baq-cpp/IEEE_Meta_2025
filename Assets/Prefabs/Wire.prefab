@@ -573,5 +573,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endA: {fileID: 3921263638997964247}
   endB: {fileID: 3593600004744077997}
-  slack: 0.02
+  slack: 0.1
   segments: 12

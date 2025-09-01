@@ -41,5 +41,8 @@ public class PinSelectable : XRBaseInteractable
     {
         base.OnSelectEntered(args);
         WireManager.Instance.HandlePinSelected(this);
+
+        // Get the object that interacted with this pin
+        GameObject otherObj = args.interactorObject.transform.gameObject;
     }
 }
