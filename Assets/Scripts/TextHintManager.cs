@@ -123,7 +123,7 @@ public class TextHintManager : MonoBehaviour
             resolvedType = "IC";
         }
 
-        else if (objectName == "R330" || objectName == "R1000")
+        else if (objectName == "Resistor_330" || objectName == "Resistor_1K")
         {
             resolvedType = "Resistor";
         }
@@ -133,7 +133,7 @@ public class TextHintManager : MonoBehaviour
             resolvedType = "LED";
         }
 
-        else if (objectName == "DIP Switch Body")
+        else if (objectName == "SWITCH")
         {
             resolvedType = "Dip Switch";
         }
