@@ -109,7 +109,7 @@ public class Breadboard{
         int count = 0;
         foreach (var (r, c) in toRemove)
             if (UnplaceAt(r, c)) count++;
-
+        registeredComponents.Remove(component);
         return count;
     }
 
