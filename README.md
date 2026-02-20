@@ -32,9 +32,14 @@ These instructions have only been tested on the Meta Quest 3 and Meta Quest Pro.
 4. Launch it from Unknown Sources
 
 ### For Developers
+## Headset
 1. Enable Developer Mode on the headset
-2. Set up Android build support in Unity 6.1 (6000.1.7f1)
+2. Set up Android build support in Unity 6.1 (6000.1.7f1), install Microsoft VS Community (2022 or higher)
 3. Configure XR + Quest settings
 4. Build an APK
 5. Install it on the headset
 6. Launch it from Unknown Sources
+
+## Simulation
+1. Activate Meta XR Simulator - Meta/Meta XR Simulator/Activate
+2. Set the scene to Schematic_1_Demo
