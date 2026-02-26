@@ -42,4 +42,4 @@ These instructions have only been tested on the Meta Quest 3 and Meta Quest Pro.
 
 ## Simulation
 1. Activate Meta XR Simulator - Meta/Meta XR Simulator/Activate
-2. Set the scene to Schematic_1_Demo
+2. Set the scene to Assets/Scenes/Schematic_1_Demo
