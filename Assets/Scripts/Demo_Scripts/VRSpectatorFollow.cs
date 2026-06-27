@@ -4,7 +4,7 @@ using UnityEngine;
 public class VRSpectatorFollow : MonoBehaviour
 {
     [SerializeField] Camera xrCamera;        // assign your XR Origin’s Camera here
-    [SerializeField] float desktopFOV = 70f;
+    [SerializeField] float desktopFOV = 60f;
     [SerializeField] Vector3 positionOffset; // e.g., new Vector3(0f, 0.1f, -0.3f)
     [SerializeField] Vector3 eulerOffset;    // small yaw/pitch/roll tweaks
 

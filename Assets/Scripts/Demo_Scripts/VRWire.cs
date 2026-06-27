@@ -15,6 +15,7 @@ public class VRWire : MonoBehaviour
     public float slack = 0.02f; // small sag in meters
     public int segments = 12;
 
+    public Material[] wireMaterials;
 
     private LineRenderer _lr;
 
@@ -27,6 +28,8 @@ public class VRWire : MonoBehaviour
         _lr.receiveShadows = false;
         _lr.motionVectorGenerationMode = MotionVectorGenerationMode.ForceNoMotion;
         _lr.useWorldSpace = true;
+
+        RandomizeMaterial();
     }
 
 
@@ -58,5 +61,14 @@ public class VRWire : MonoBehaviour
     {
         if (!_lr) _lr = GetComponent<LineRenderer>();
         if (mat && _lr) _lr.sharedMaterial = mat;
+    }
+
+    public void RandomizeMaterial()
+    {
+        if (wireMaterials != null && wireMaterials.Length > 0)
+        {
+            int index = Random.Range(0, wireMaterials.Length);
+            SetMaterial(wireMaterials[index]);
+        }
     }
 }
