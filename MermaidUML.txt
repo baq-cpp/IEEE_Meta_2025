@@ -1,0 +1,141 @@
+classDiagram
+
+namespace LogicEngine_Primitives {
+    class BooleanMath {
+        <<static>>
+        +AND(a: LogicState, b: LogicState) LogicState$
+        +OR(a: LogicState, b: LogicState) LogicState$
+        +NOT(a: LogicState) LogicState$
+    }
+}
+
+namespace LogicEngine_Core {
+    class LogicState {
+        <<enumeration>>
+        StrongHigh
+        StrongLow
+        WeakHigh
+        WeakLow
+        Floating
+        Error
+    }
+
+    class PinType {
+        <<enumeration>>
+        Input
+        Output
+        Power
+        Ground
+    }
+
+    class SimulationManager {
+        -List~ElectricalNode~ allNodes
+        -List~BaseComponent~ allComponents
+        +StepSimulation() void
+    }
+
+    class ElectricalNode {
+        +LogicState CurrentState
+        -List~Pin~ connectedPins
+        +RegisterPin(pin: Pin) void
+        +UnregisterPin(pin: Pin) void
+        +ResetState() void
+        +Resolve() void
+    }
+
+    class Pin {
+        +PinType Type
+        +LogicState LocalState
+        +ElectricalNode ConnectedNode
+        +GetValue() LogicState
+    }
+
+    class Wire {
+        +Pin PinA
+        +Pin PinB
+    }
+
+    class BaseComponent {
+        <<abstract>>
+        +List~Pin~ Pins
+        +UpdateOutputs() void*
+        +EvaluateLogic() void*
+    }
+}
+
+namespace LogicEngine_Components {
+    class LS74XX {
+        -LogicState out1
+        -LogicState out2
+        -LogicState out3
+        -LogicState out4
+        +UpdateOutputs() void
+        +EvaluateLogic() void
+    }
+
+    class Resistor {
+        -Pin pinA
+        -Pin pinB
+        +UpdateOutputs() void
+        +EvaluateLogic() void
+        -ConvertToWeak(input: LogicState) LogicState
+    }
+
+}
+
+namespace UnityVisualLayer {
+    class SimulationController {
+        -SimulationManager simManager
+        +Awake() void
+        +FixedUpdate() void
+    }
+
+    class BreadboardRowBridge {
+        +ElectricalNode RowNode
+        -string rowIdentifier
+        +Awake() void
+        +ConnectPinToRow(logicPin: Pin) void
+        +DisconnectPinFromRow(logicPin: Pin) void
+    }
+
+    class BreadboardSocket {
+        -BreadboardRowBridge parentRow
+        +OnTriggerEnter(other: Collider) void
+        +OnTriggerExit(other: Collider) void
+    }
+
+    class PhysicalComponent {
+        -BaseComponent internalLogic
+        +List~PhysicalPin~ PhysicalPins
+        +Start() void
+        +Update() void
+    }
+
+
+    class PhysicalPin {
+        +Pin LogicPin
+    }
+
+}
+
+%% Core Relationships
+SimulationManager *-- ElectricalNode
+SimulationManager *-- BaseComponent
+
+BaseComponent *-- Pin
+ElectricalNode o-- Pin
+Wire o-- Pin
+
+%% Component Inheritance & Dependencies
+BaseComponent <|-- LS74XX
+BaseComponent <|-- Resistor
+
+LS74XX ..> BooleanMath
+
+%% Unity Visual Layer Relationships
+SimulationController --> SimulationManager
+BreadboardRowBridge --> ElectricalNode
+BreadboardSocket --> BreadboardRowBridge
+PhysicalComponent --> BaseComponent
+PhysicalComponent *-- PhysicalPin
+PhysicalPin --> Pin

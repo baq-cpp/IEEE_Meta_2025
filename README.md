@@ -10,7 +10,7 @@ This lab is based on the Cal Poly Pomona course ECE 3300/L - Digital Circuit Des
 
 ## Features
 - [x] Realistic components
-- [x] Accurate circuit simulation
+- [ ] Accurate circuit simulation
 - [ ] Tailored learning
 - [ ] Metric Tracking
 
