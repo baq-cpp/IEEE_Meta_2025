@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Schematic_1_Demo.unity
+    path: Assets/Scenes/SchematicOne.unity
     guid: 5b05e5629838fd74f9a74ac3c806c5d6
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
