@@ -123,17 +123,17 @@ public class TextHintManager : MonoBehaviour
             resolvedType = "IC";
         }
 
-        else if (objectName == "R330" || objectName == "R1000")
+        else if (objectName.Contains("Resistor"))
         {
             resolvedType = "Resistor";
         }
 
-        else if (objectName == "LED_Green" || objectName == "LED_Red")
+        else if (objectName.Contains("LED"))
         {
             resolvedType = "LED";
         }
 
-        else if (objectName == "DIP Switch Body")
+        else if (objectName == "SWITCH")
         {
             resolvedType = "Dip Switch";
         }

@@ -46,7 +46,7 @@ private void OnSocketed(SelectEnterEventArgs args)
         Debug.Log($"{socketCoordName},{insertedObj}");
     (int, int) socketCoordParsed = Component2.ParseOrderedPair(socketCoordName);
         TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));
-        Breadboard.Instance.PlaceComponent(socketCoordParsed.Item1,socketCoordParsed.Item2, new Component2(insertedObj,socketCoordParsed.Item1,socketCoordParsed.Item2,Breadboard.Instance));
+        // Breadboard.Instance.PlaceComponent(socketCoordParsed.Item1,socketCoordParsed.Item2, new Component2(insertedObj,socketCoordParsed.Item1,socketCoordParsed.Item2,Breadboard.Instance));
         _hintManager.OnComponentInteracted(insertedObj.name); //This interacts with TextHintManager to push component into stack
 
         //Debug.Log($"Socket {socketCoordName} now socketed with {insertedObjCoordName}");
@@ -71,11 +71,11 @@ private void OnSocketed(SelectEnterEventArgs args)
         string insertedObjCoordName = removedObj.name;
         (int, int) socketCoordParsed = Component2.ParseOrderedPair(socketCoordName);
 
-    // Get the exact Component2 at this socket and unplace by instance
+    /*// Get the exact Component2 at this socket and unplace by instance
     if (Breadboard.Instance.TryGetComponentAt(socketCoordParsed, out var comp))
     {
         Breadboard.Instance.UnplaceComponent(comp);
-    } 
+    } */
         
 
 

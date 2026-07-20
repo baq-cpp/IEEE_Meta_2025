@@ -138,6 +138,7 @@ Material:
     - _WristRangeScalar: 1
     - _WristRangeScalarA: 1
     - _WristRangeScalarB: 1
+    - _XRMotionVectorsPass: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0

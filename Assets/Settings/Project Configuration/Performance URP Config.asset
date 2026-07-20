@@ -131,7 +131,7 @@ MonoBehaviour:
   m_PrefilterScreenSpaceIrradiance: 0
   m_PrefilterNativeRenderPass: 1
   m_PrefilterUseLegacyLightmaps: 0
-  m_PrefilterBicubicLightmapSampling: 0
+  m_PrefilterBicubicLightmapSampling: 1
   m_PrefilterReflectionProbeRotation: 0
   m_PrefilterReflectionProbeBlending: 0
   m_PrefilterReflectionProbeBoxProjection: 0
