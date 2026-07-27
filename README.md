@@ -40,6 +40,8 @@ These instructions have only been tested on the Meta Quest 3 and Meta Quest Pro.
 5. Install it on the headset
 6. Launch it from Unknown Sources
 
+
 ## Simulation
 1. Activate Meta XR Simulator - Meta/Meta XR Simulator/Activate
 2. Set the scene to Assets/Scenes/SchematicOne
+
