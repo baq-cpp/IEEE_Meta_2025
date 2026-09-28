@@ -123,6 +123,11 @@ public class TextHintManager : MonoBehaviour
             resolvedType = "IC";
         }
 
+        else if (objectName.Contains("VariableResistor"))
+        {
+            resolvedType = "Variable Resistor";
+        }
+
         else if (objectName.Contains("Resistor"))
         {
             resolvedType = "Resistor";
@@ -147,7 +152,7 @@ public class TextHintManager : MonoBehaviour
             _stack1.Push(resolvedType);
     }
 
-    // Button handler for Get Hint
+        // Button handler for Get Hint
     public void OnGetHintClicked()
     {
         hintMenu.SetActive(true);
