@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.meta.xr.simulator": "77.0.0",
+    "com.meta.xr.simulator": "81.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.12.4",
     "com.unity.feature.development": "1.0.2",
@@ -12,7 +12,7 @@
     "com.unity.xr.hands": "1.7.3",
     "com.unity.xr.interaction.toolkit": "3.3.2",
     "com.unity.xr.management": "4.5.4",
-    "com.unity.xr.oculus": "4.5.2",
+    "com.unity.xr.oculus": "4.5.5",
     "com.unity.xr.openxr": "1.16.1",
     "com.unity.modules.accessibility": "1.0.0",
     "com.unity.modules.adaptiveperformance": "1.0.0",
