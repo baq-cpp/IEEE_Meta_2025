@@ -31,8 +31,11 @@ private Collider socketCollider;
 
 void OnDestroy()
 {
+   
+    
     socket.selectEntered.RemoveListener(OnSocketed);
     socket.selectExited.RemoveListener(OnUnsocketed);
+    
 }
 
 private void OnSocketed(SelectEnterEventArgs args)
