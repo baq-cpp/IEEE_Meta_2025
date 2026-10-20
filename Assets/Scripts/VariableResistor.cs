@@ -26,7 +26,7 @@ public class VariableResistor : MonoBehaviour
     [SerializeField] private Transform knob;
     [SerializeField] private UnityEvent<float> resistanceChanged;
 
-    private XRGrabInteractable grabInteractable;
+    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
 
     public float Resistance => Mathf.Lerp(minimumResistance, maximumResistance, normalizedResistance);
     public float MinimumResistance => minimumResistance;
@@ -38,7 +38,7 @@ public class VariableResistor : MonoBehaviour
         EnsureKnob();
         ApplyVisualState();
 
-        grabInteractable = GetComponent<XRGrabInteractable>();
+        grabInteractable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         if (grabInteractable != null)
             grabInteractable.activated.AddListener(OnActivated);
     }

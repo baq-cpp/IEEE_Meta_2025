@@ -71,5 +71,156 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af983f9ee5301324fa2d9216678e234f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5767838147158170784}
+    - targetCorrespondingSourceObject: {fileID: 7146135470113100320, guid: af983f9ee5301324fa2d9216678e234f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8938546398870126263}
+    - targetCorrespondingSourceObject: {fileID: 7146135470113100320, guid: af983f9ee5301324fa2d9216678e234f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8387811320917097859}
   m_SourcePrefab: {fileID: 100100000, guid: af983f9ee5301324fa2d9216678e234f, type: 3}
+--- !u!1 &1222432432796055187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: af983f9ee5301324fa2d9216678e234f, type: 3}
+  m_PrefabInstance: {fileID: 2033263097723259842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5767838147158170784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222432432796055187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7916e5dede6dd9b48b2b647aec6edff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DCPowerSupplyController
+  voltageCoarseKnob: {fileID: 0}
+  voltageFineKnob: {fileID: 0}
+  currentCoarseKnob: {fileID: 0}
+  currentFineKnob: {fileID: 0}
+  powerButton: {fileID: 0}
+  maximumVoltage: 30
+  maximumCurrent: 5
+  voltageFineRange: 1
+  currentFineRange: 0.1
+  voltageCoarseValue: 0.5
+  voltageFineValue: 0.5
+  currentCoarseValue: 0.5
+  currentFineValue: 0.5
+  powerEnabled: 0
+  minimumKnobAngle: -135
+  maximumKnobAngle: 135
+  voltageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  currentLimitChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  powerStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &9159114768716241378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7146135470113100320, guid: af983f9ee5301324fa2d9216678e234f, type: 3}
+  m_PrefabInstance: {fileID: 2033263097723259842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8938546398870126263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159114768716241378}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.004999995, y: 0.0100000035, z: 0.009999998}
+  m_Center: {x: 0.000000059604645, y: 9.313226e-10, z: 0}
+--- !u!114 &8387811320917097859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159114768716241378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f0564ab4f135047a216dd1b944f7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DCPowerSupplyButton
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_AutoFindParentInteractableInHierarchy: 0
+  m_ParentInteractableObject: {fileID: 0}
