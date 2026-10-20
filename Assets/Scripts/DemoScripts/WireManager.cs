@@ -1,10 +1,47 @@
 // WireManager.cs — point & click wiring + pin-tap delete mode
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WireManager : MonoBehaviour
 {
     public static WireManager Instance { get; private set; }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Mouse.current == null || Camera.main == null)
+            return;
+
+        bool leftClick = Mouse.current.leftButton.wasPressedThisFrame;
+        bool rightClick = Mouse.current.rightButton.wasPressedThisFrame;
+
+        if (!leftClick && !rightClick)
+            return;
+
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray);
+
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (RaycastHit hit in hits)
+        {
+            MouseWireSelector selector =
+                hit.collider.GetComponentInParent<MouseWireSelector>();
+
+            if (selector == null)
+                continue;
+
+            if (rightClick)
+                DeleteAllWiresFromPin(selector.Pin);
+            else
+                selector.SelectPin();
+
+            break;
+        }
+#endif
+    }
 
     [Header("Wire Prefab & Look")]
     public VRWire wirePrefab;
@@ -28,6 +65,7 @@ public class WireManager : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Called by PinSelectable.OnSelectEntered
