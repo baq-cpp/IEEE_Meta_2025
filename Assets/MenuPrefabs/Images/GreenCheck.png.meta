@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: ac24a82d588b5394983c676ffbb30e44
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5052813824448126179
+    second: GreenCheck_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,7 +124,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: GreenCheck_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2624
+        height: 2624
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13269df89cc0e9b0800000000000000
+      internalID: -5052813824448126179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []

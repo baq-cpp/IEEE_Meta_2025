@@ -19,6 +19,15 @@ public class SelectionManager : MonoBehaviour
             Debug.LogWarning("No option selected!");
             return;
         }
+
+        if (MetricsManager.Instance == null)
+        {
+            Debug.LogError("MetricsManager not found in menu scene.");
+            return;
+        }
+
+        string selectedLab = sceneNames[selectedIndex];
+        MetricsManager.Instance.PrepareLab(selectedLab);
         SceneManager.LoadScene(sceneNames[selectedIndex]);
        
     }

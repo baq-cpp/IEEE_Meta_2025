@@ -2925,6 +2925,7 @@ MonoBehaviour:
         m_Action: Menu
         m_Flags: 0
       m_Flags: 0
+      m_Priority: 0
     m_Reference: {fileID: 0}
 --- !u!1 &1263347569
 GameObject:
@@ -3295,6 +3296,23 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 625768714}
   m_SourcePrefab: {fileID: 100100000, guid: c1c3c75456bd299408103f0b4ae9bc53, type: 3}
+--- !u!1 &1508487671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4133556354183614041, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+  m_PrefabInstance: {fileID: 4104486437964197383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1508487677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508487671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2dbd9052d3ddc744b765d430ddb6641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MetricsEndButton
 --- !u!1 &1557102812
 GameObject:
   m_ObjectHideFlags: 0
@@ -6346,16 +6364,44 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 487644232855301709}
+    - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1508487677}
+    - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndLab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MetricsEndButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595328211984458479, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5256603622622314474, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
       propertyPath: m_Name
       value: FinalExitUI
       objectReference: {fileID: 0}
     - target: {fileID: 5256603622622314474, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7751847677704450183, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6404,7 +6450,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4133556354183614041, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1508487677}
   m_SourcePrefab: {fileID: 100100000, guid: 4b24049452514da4fa1137b4bfd648a0, type: 3}
 --- !u!114 &4142624157249259310
 MonoBehaviour:

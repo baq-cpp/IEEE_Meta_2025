@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 76594a01d514250458f0fb0699af8ecb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7880882744501493045
+    second: pinout_74ls32_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,7 +124,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: pinout_74ls32_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 3275
+        height: 3281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc2ab7906ea71a290800000000000000
+      internalID: -7880882744501493045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
