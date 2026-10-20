@@ -5,7 +5,7 @@ public class SelectionManager : MonoBehaviour
 {
     public int selectedIndex = -1;
     public string[] sceneNames; // e.g. {"Scene1", "Scene2", "Scene3"}
-
+    
     public void SelectOption(int index)
     {
         selectedIndex = index;
@@ -20,6 +20,7 @@ public class SelectionManager : MonoBehaviour
             return;
         }
         SceneManager.LoadScene(sceneNames[selectedIndex]);
+       
     }
 
 }
