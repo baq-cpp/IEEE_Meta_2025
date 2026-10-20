@@ -36,7 +36,7 @@ public class GridManage : MonoBehaviour
 
             for (int y = 0; y < _height; y++)//loop for height 
             {
-                float TerminalSpacing = 0.02286f;
+                float TerminalSpacing = 0.02286f; //39-41 adjust
                 float HeightSpacing = 0.0235f;
                 float BridgeSpace = 0.211f;
 
@@ -51,6 +51,7 @@ public class GridManage : MonoBehaviour
                 if (x >= 10) zPos += BridgeSpace;
                 if (x >= 15) zPos += RowGap;
 
+                //controls spheres, DO NOT TOUCH
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_gridOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
@@ -76,20 +77,20 @@ public class GridManage : MonoBehaviour
             }
         }
 
-
+        // power rail spacing
          for (int x = 0; x < _RailsWidth; x++)
         {
             for (int y = 0; y < _RailsHeight; y++)
             {
 
-                float TerminalSpacing = 0.02286f;
+                float TerminalSpacing = 0.02286f; //audit
                 float HeightSpacing = 0.0235f;
 
                 float zPos = x * TerminalSpacing;
 
                 float Ypos = y* HeightSpacing;
 
-                float CenterRail = 0.36321f;
+                float CenterRail = 0.36321f;   //middle power
                 float SpaceCenter = 0.0332f;
 
                 if (x >= 2) zPos += CenterRail;
@@ -109,7 +110,7 @@ public class GridManage : MonoBehaviour
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
                 sphere.name = $"({y},{x})";
 
-                if (x >= 2) sphere.name = $"{y},{x + 10}";
+                if (x >= 2) sphere.name = $"{y},{x + 10}"; //controls spheres, DO NOT TOUCH
                 if (x >= 6) sphere.name = $"{y},{x + 20}";
 
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
