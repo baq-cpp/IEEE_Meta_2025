@@ -28,7 +28,7 @@ public class GridManage : MonoBehaviour
     void generateGrid()
     {
 
-        float RowGap = 0.0422f;
+        float RowGap = 0.0844f;
         
 
         for (int x = 0; x < _width; x++)//loop for width
@@ -36,9 +36,9 @@ public class GridManage : MonoBehaviour
 
             for (int y = 0; y < _height; y++)//loop for height 
             {
-                float TerminalSpacing = 0.02286f; //39-41 adjust
-                float HeightSpacing = 0.0235f;
-                float BridgeSpace = 0.211f;
+                float TerminalSpacing = 0.04572f; //39-41 adjust
+                float HeightSpacing = 0.047f;
+                float BridgeSpace = 0.422f;
 
 
                 float Ypos = y * TerminalSpacing;
@@ -83,26 +83,25 @@ public class GridManage : MonoBehaviour
             for (int y = 0; y < _RailsHeight; y++)
             {
 
-                float TerminalSpacing = 0.02286f; //audit
-                float HeightSpacing = 0.0235f;
+                float TerminalSpacing = 0.04572f; // scales spacing between horizontal pairs
+                float HeightSpacing = 0.047f; // scales spacing between vertical pairs on the powerrail
 
                 float zPos = x * TerminalSpacing;
 
-                float Ypos = y* HeightSpacing;
+                float Ypos = y * HeightSpacing;
 
-                float CenterRail = 0.36321f;   //middle power
-                float SpaceCenter = 0.0332f;
+                float CenterRail = 0.6356175f;   //middle power
+                float SpaceCenter = 0.0747f;
+                float CenterRail2 = 0.7150696875f;
 
                 if (x >= 2) zPos += CenterRail;
                 if (x >= 4) zPos += SpaceCenter;
-                if (x >= 6) zPos += CenterRail;
-
-
+                if (x >= 6) zPos += CenterRail2;
 
                 int groupCount = y / 5;
                 if (groupCount > 0 && groupCount <= 50)
                 {
-                    Ypos += groupCount * 0.0188f; // adjust gap per group 0.02700 0.04986
+                    Ypos += groupCount * 0.0376f; // adjust gap per group 0.02700 0.04986
                 }
                 
 
