@@ -2108,7 +2108,7 @@ MonoBehaviour:
   _RailsWidth: 8
   _spherePrefab: {fileID: 7083549576773312167, guid: 99a959d6c0985a54c82cd61972ae85d7, type: 3}
   _gridOffset: {x: -0.1678, y: 0.8044, z: -2.3715}
-  _RailOffset: {x: -0.1194, y: 0.8044, z: -2.461}
+  _RailOffset: {x: -0.06816875, y: 0.8044, z: -2.461}
 --- !u!4 &883370753
 Transform:
   m_ObjectHideFlags: 0
@@ -2652,7 +2652,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.83838, y: 0.735, z: -1.96526}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5362,7 +5362,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: 0.086, z: -0.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7413223126904300832}
@@ -5652,7 +5652,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: 0.086, z: -0.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8102589518280613293}
@@ -6275,7 +6275,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: 0.086, z: -0.24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8922136270698622113}
