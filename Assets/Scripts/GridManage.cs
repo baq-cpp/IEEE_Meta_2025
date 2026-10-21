@@ -45,9 +45,7 @@ public class GridManage : MonoBehaviour
                 float zPos = x * HeightSpacing;
 
 
-
                 if (x >= 5) zPos += RowGap;
-
                 if (x >= 10) zPos += BridgeSpace;
                 if (x >= 15) zPos += RowGap;
 
@@ -87,16 +85,17 @@ public class GridManage : MonoBehaviour
                 float HeightSpacing = 0.047f; // scales spacing between vertical pairs on the powerrail
 
                 float zPos = x * TerminalSpacing;
-
                 float Ypos = y * HeightSpacing;
 
-                float CenterRail = 0.6356175f;   //middle power
+                float CenterRail = 0.72642f;   //middle power
                 float SpaceCenter = 0.0747f;
                 float CenterRail2 = 0.7150696875f;
 
+                if (x >= 0) zPos -= 1.875f * TerminalSpacing;
                 if (x >= 2) zPos += CenterRail;
                 if (x >= 4) zPos += SpaceCenter;
                 if (x >= 6) zPos += CenterRail2;
+
 
                 int groupCount = y / 5;
                 if (groupCount > 0 && groupCount <= 50)
