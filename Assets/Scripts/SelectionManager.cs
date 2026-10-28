@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class SelectionManager : MonoBehaviour
 {
     public int selectedIndex = -1;
-    public string[] sceneNames; // e.g. {"Scene1", "Scene2", "Scene3"}
+    public string[] sceneNames; 
     
     public void SelectOption(int index)
     {
