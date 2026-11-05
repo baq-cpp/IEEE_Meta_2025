@@ -2,16 +2,13 @@ using TMPro;
 using UnityEngine;
 
 // Goes on the User Info screen (UserInfoCanvas). The screen's Continue/Start
-// button calls OnContinuePressed(). If the name and ID are valid, they are
-// stored in UserSession and the menu moves on to the next screen
-// (Schematic Select). Otherwise an error is shown and the screen stays.
+// button calls OnContinuePressed(). The name and ID are stored in UserSession
+// and the menu moves on to the next screen (Schematic Select).
 //
 // Text can come from the VR keyboard or a desktop keyboard: this script only
 // reads the input fields' text, so it works with either.
 public class UserInfoForm : MonoBehaviour
 {
-    public const int BroncoIdLength = 9;
-
     [Header("Input fields")]
     [SerializeField] private TMP_InputField nameField;
     [SerializeField] private TMP_InputField idField;
@@ -52,24 +49,11 @@ public class UserInfoForm : MonoBehaviour
         if (nextScreen != null) nextScreen.SetActive(true);
     }
 
-    // Returns null when valid, otherwise a short message for the student.
+    // Input checking (empty name, 9-digit Bronco ID, error messages) belongs
+    // to Haredth's User Info work (REQ-F-02). Until that is decided, this
+    // accepts any input. Return a message here to block Continue.
     public static string Validate(string userName, string studentId)
     {
-        if (string.IsNullOrWhiteSpace(userName))
-            return "Please enter your name.";
-
-        if (string.IsNullOrEmpty(studentId))
-            return "Please enter your Bronco ID.";
-
-        if (studentId.Length != BroncoIdLength)
-            return $"Your Bronco ID must be {BroncoIdLength} digits.";
-
-        foreach (char c in studentId)
-        {
-            if (c < '0' || c > '9')
-                return "Your Bronco ID can only contain numbers.";
-        }
-
         return null;
     }
 
