@@ -30,7 +30,11 @@ public class InputFieldGrabber : MonoBehaviour
 
      
 
-        usernumberinput  = int.Parse(numberinput);     
+        // TryParse so letters typed on the VR keyboard do not throw an exception.
+        if (int.TryParse(numberinput, out int parsed))
+        {
+            usernumberinput = parsed;
+        }
     }
   
     
