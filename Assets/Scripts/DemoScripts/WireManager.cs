@@ -30,15 +30,37 @@ public class WireManager : MonoBehaviour
             MouseWireSelector selector =
                 hit.collider.GetComponentInParent<MouseWireSelector>();
 
-            if (selector == null)
-                continue;
+            PinSelectable pin =
+                hit.collider.GetComponentInParent<PinSelectable>();
 
             if (rightClick)
-                DeleteAllWiresFromPin(selector.Pin);
-            else
-                selector.SelectPin();
+            {
+                if (selector != null)
+                {
+                    DeleteAllWiresFromPin(selector.Pin);
+                    break;
+                }
 
-            break;
+                if (pin != null)
+                {
+                    DeleteAllWiresFromPin(pin);
+                    break;
+                }
+            }
+            else
+            {
+                if (selector != null)
+                {
+                    selector.SelectPin();
+                    break;
+                }
+
+                if (pin != null)
+                {
+                    HandlePinSelected(pin);
+                    break;
+                }
+            }
         }
 #endif
     }
@@ -73,17 +95,18 @@ public class WireManager : MonoBehaviour
     {
         if (pin == null) return;
 
-        // NEW: if in delete mode, single tap nukes all wires on that pin
+        Debug.Log($"WireManager received pin: {pin.name}");
+
         if (DeleteMode)
         {
             DeleteAllWiresFromPin(pin);
             return;
         }
 
-        // --- Normal wiring flow ---
         if (_pendingPin == null)
         {
             _pendingPin = pin;
+            Debug.Log($"First pin selected: {pin.name}");
             return;
         }
 
@@ -101,13 +124,23 @@ public class WireManager : MonoBehaviour
         if (_wires.TryGetValue(key, out var existing))
         {
             if (existing) Destroy(existing.gameObject);
+
             _wires.Remove(key);
             _pendingPin = null;
             return;
         }
 
         var wire = CreateLockedWireBetween(a, b);
+
+        if (wire == null)
+        {
+            Debug.LogError($"Wire creation failed between {a.name} and {b.name}");
+            _pendingPin = null;
+            return;
+        }
+
         _wires[key] = wire;
+        Debug.Log($"Wire created successfully: {a.name} -> {b.name}");
         _pendingPin = null;
     }
 
@@ -136,12 +169,43 @@ public class WireManager : MonoBehaviour
 
     private VRWire CreateLockedWireBetween(PinSelectable a, PinSelectable b)
     {
+        if (wirePrefab == null)
+        {
+            Debug.LogError("WireManager wirePrefab is not assigned.");
+            return null;
+        }
+
         Vector3 pa = a.Anchor ? a.Anchor.position : a.transform.position;
         Vector3 pb = b.Anchor ? b.Anchor.position : b.transform.position;
-        var mid = (pa + pb) * 0.5f;
-        var fwd = (pb - pa).sqrMagnitude > 0.0001f ? (pb - pa).normalized : Vector3.forward;
 
-        var wire = Instantiate(wirePrefab, mid, Quaternion.LookRotation(fwd, Vector3.up), wireParent);
+        if (!IsFinite(pa) || !IsFinite(pb))
+        {
+            Debug.LogError($"Invalid pin position. A={pa}, B={pb}");
+            return null;
+        }
+
+        if (wirePrefab.endA == null || wirePrefab.endB == null)
+        {
+            Debug.LogError("Wire prefab is missing End A or End B.");
+            return null;
+        }
+
+        Vector3 difference = pb - pa;
+        Vector3 fwd = difference.sqrMagnitude > 0.0001f
+            ? difference.normalized
+            : Vector3.forward;
+
+        Vector3 mid = (pa + pb) * 0.5f;
+
+        var wire = Instantiate(
+            wirePrefab,
+            mid,
+            Quaternion.LookRotation(fwd, Vector3.up),
+            wireParent
+        );
+
+        if (wire == null)
+            return null;
 
         if (wireMaterials != null && wireMaterials.Length > 0)
         {
@@ -151,6 +215,8 @@ public class WireManager : MonoBehaviour
 
         SnapEndToPin(wire.endA, a);
         SnapEndToPin(wire.endB, b);
+
+        Debug.Log($"Wire endpoints snapped: A={wire.endA.transform.position}, B={wire.endB.transform.position}");
 
         return wire;
     }
@@ -175,5 +241,15 @@ public class WireManager : MonoBehaviour
         int ia = a.GetInstanceID();
         int ib = b.GetInstanceID();
         return ia < ib ? (ia, ib) : (ib, ia);
+    }
+
+    private static bool IsFinite(Vector3 value)
+    {
+        return !float.IsNaN(value.x) &&
+               !float.IsNaN(value.y) &&
+               !float.IsNaN(value.z) &&
+               !float.IsInfinity(value.x) &&
+               !float.IsInfinity(value.y) &&
+               !float.IsInfinity(value.z);
     }
 }
