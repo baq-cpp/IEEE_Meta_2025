@@ -73,10 +73,10 @@ public class DCPowerSupplyController : MonoBehaviour
     [SerializeField] private FloatValueEvent currentLimitChanged = new FloatValueEvent();
     [SerializeField] private BoolValueEvent powerStateChanged = new BoolValueEvent();
 
-    private XRKnob voltageCoarseControl;
-    private XRKnob voltageFineControl;
-    private XRKnob currentCoarseControl;
-    private XRKnob currentFineControl;
+    private DCPowerSupplyXRKnob voltageCoarseControl;
+    private DCPowerSupplyXRKnob voltageFineControl;
+    private DCPowerSupplyXRKnob currentCoarseControl;
+    private DCPowerSupplyXRKnob currentFineControl;
     private DCPowerSupplyButton powerButtonControl;
 
     public float OutputVoltage =>
@@ -179,7 +179,7 @@ public class DCPowerSupplyController : MonoBehaviour
         return null;
     }
 
-    private XRKnob ConfigureKnob(
+    private DCPowerSupplyXRKnob ConfigureKnob(
         Transform knobTransform,
         DCPowerSupplyKnob knobType,
         float initialValue)
@@ -193,9 +193,9 @@ public class DCPowerSupplyController : MonoBehaviour
             collider.radius = 0.035f;
         }
 
-        XRKnob knob = knobTransform.GetComponent<XRKnob>();
+        DCPowerSupplyXRKnob knob = knobTransform.GetComponent<DCPowerSupplyXRKnob>();
         if (knob == null)
-            knob = knobTransform.gameObject.AddComponent<XRKnob>();
+            knob = knobTransform.gameObject.AddComponent<DCPowerSupplyXRKnob>();
 
         knob.handle = knobTransform;
         knob.clampedMotion = true;
@@ -239,7 +239,7 @@ public class DCPowerSupplyController : MonoBehaviour
         float newValue = Mathf.Clamp01(currentValue + normalizedDelta);
         SetStoredKnobValue(knobType, newValue);
 
-        XRKnob knob = GetKnobControl(knobType);
+        DCPowerSupplyXRKnob knob = GetKnobControl(knobType);
         if (knob != null)
             knob.value = newValue;
 
@@ -251,7 +251,7 @@ public class DCPowerSupplyController : MonoBehaviour
         normalizedValue = Mathf.Clamp01(normalizedValue);
         SetStoredKnobValue(knobType, normalizedValue);
 
-        XRKnob knob = GetKnobControl(knobType);
+        DCPowerSupplyXRKnob knob = GetKnobControl(knobType);
         if (knob != null)
             knob.value = normalizedValue;
 
@@ -319,7 +319,7 @@ public class DCPowerSupplyController : MonoBehaviour
         }
     }
 
-    private XRKnob GetKnobControl(DCPowerSupplyKnob knobType)
+    private DCPowerSupplyXRKnob GetKnobControl(DCPowerSupplyKnob knobType)
     {
         switch (knobType)
         {

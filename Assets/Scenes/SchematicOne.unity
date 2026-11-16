@@ -5748,6 +5748,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5767838147158170784, guid: d3036314a325a0246aa2bbf07a5382c8, type: 3}
+      propertyPath: powerEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767838147158170784, guid: d3036314a325a0246aa2bbf07a5382c8, type: 3}
+      propertyPath: voltageCoarseValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767838147158170784, guid: d3036314a325a0246aa2bbf07a5382c8, type: 3}
+      propertyPath: voltageChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767838147158170784, guid: d3036314a325a0246aa2bbf07a5382c8, type: 3}
+      propertyPath: voltageChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
