@@ -10260,6 +10260,7 @@ MonoBehaviour:
   - Scenes/SchematicOne
   - Scenes/SchematicTwo
   - Scenes/SchematicThree
+  - Scenes/MainMenu
 --- !u!222 &6174324803429006035
 CanvasRenderer:
   m_ObjectHideFlags: 0
