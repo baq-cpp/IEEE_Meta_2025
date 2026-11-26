@@ -119,6 +119,16 @@ public class WireManager : MonoBehaviour
             return;
         }
 
+        if (!IsValidConnection(a, b))
+        {
+            Debug.LogWarning(
+                $"Invalid connection blocked: {a.name} -> {b.name}"
+            );
+
+            _pendingPin = null;
+            return;
+        }
+
         var key = MakeKey(a, b);
 
         if (_wires.TryGetValue(key, out var existing))
@@ -142,6 +152,48 @@ public class WireManager : MonoBehaviour
         _wires[key] = wire;
         Debug.Log($"Wire created successfully: {a.name} -> {b.name}");
         _pendingPin = null;
+    }
+
+    private static bool IsValidConnection(PinSelectable a, PinSelectable b)
+    {
+        string nameA = a.name;
+        string nameB = b.name;
+
+        bool aIsSocket =
+            nameA == "Socket_Pos" ||
+            nameA == "Socket_Neg" ||
+            nameA == "Socket_GND";
+
+        bool bIsSocket =
+            nameB == "Socket_Pos" ||
+            nameB == "Socket_Neg" ||
+            nameB == "Socket_GND";
+
+        // Two power-supply terminals cannot connect directly
+        if (aIsSocket && bIsSocket)
+            return false;
+
+        // If neither pin is a power-supply terminal,
+        // allow normal circuit wiring
+        if (!aIsSocket && !bIsSocket)
+            return true;
+
+        string socketName = aIsSocket ? nameA : nameB;
+        string otherName = aIsSocket ? nameB : nameA;
+
+        // Positive can connect only to Breadboard_Pos
+        if (socketName == "Socket_Pos")
+            return otherName == "Breadboard_Pos";
+
+        // Negative can connect only to Breadboard_Neg
+        if (socketName == "Socket_Neg")
+            return otherName == "Breadboard_Neg";
+
+        // Ground is blocked until Breadboard_GND exists
+        if (socketName == "Socket_GND")
+            return otherName == "Breadboard_GND";
+
+        return false;
     }
 
     private void DeleteAllWiresFromPin(PinSelectable pin)

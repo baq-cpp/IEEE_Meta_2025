@@ -13,6 +13,7 @@ public class VRWire : MonoBehaviour
     public WireEnd endA;
     public WireEnd endB;
     public float slack = 0.02f; // small sag in meters
+    public float clearanceHeight = 0.35f;
     public int segments = 12;
 
     public Material[] wireMaterials;
@@ -42,16 +43,25 @@ public class VRWire : MonoBehaviour
 
     private void DrawCurve(Vector3 a, Vector3 b)
     {
-        // Simple catenary-like sag using a midpoint offset
-        var mid = (a + b) * 0.5f;
-        var up = Physics.gravity.sqrMagnitude > 0 ? -Physics.gravity.normalized : Vector3.down;
-        mid += up * slack;
+        Vector3 mid = (a + b) * 0.5f;
 
+        // Raise the middle of the wire above the objects
+        Vector3 controlPoint = mid + Vector3.up * clearanceHeight;
+
+        // Optional small sag
+        controlPoint += Vector3.down * slack;
 
         for (int i = 0; i < segments; i++)
         {
             float t = i / (segments - 1f);
-            Vector3 p = Vector3.Lerp(Vector3.Lerp(a, mid, t), Vector3.Lerp(mid, b, t), t); // quadratic bezier
+
+            Vector3 p =
+                Vector3.Lerp(
+                    Vector3.Lerp(a, controlPoint, t),
+                    Vector3.Lerp(controlPoint, b, t),
+                    t
+                );
+
             _lr.SetPosition(i, p);
         }
     }
