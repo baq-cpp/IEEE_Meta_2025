@@ -35,16 +35,16 @@ void OnDestroy()
     socket.selectExited.RemoveListener(OnUnsocketed);
 }
 
-private void OnSocketed(SelectEnterEventArgs args)
-{
-    GameObject socketObj = gameObject;
-    GameObject insertedObj = args.interactableObject.transform.gameObject;
+    private void OnSocketed(SelectEnterEventArgs args)
+    {
+        GameObject socketObj = gameObject;
+        GameObject insertedObj = args.interactableObject.transform.gameObject;
 
-    string socketCoordName = transform.parent != null ? transform.parent.name : gameObject.name;          
-    string insertedObjCoordName = insertedObj.name;     
+        string socketCoordName = transform.parent != null ? transform.parent.name : gameObject.name;
+        string insertedObjCoordName = insertedObj.name;
 
         Debug.Log($"{socketCoordName},{insertedObj}");
-    (int, int) socketCoordParsed = Component2.ParseOrderedPair(socketCoordName);
+        (int, int) socketCoordParsed = Component2.ParseOrderedPair(socketCoordName);
         TilesManage.Instance._Connections.Add(TilesManage.Instance.GetOrderedPair(socketCoordName, insertedObj.name));
         // Breadboard.Instance.PlaceComponent(socketCoordParsed.Item1,socketCoordParsed.Item2, new Component2(insertedObj,socketCoordParsed.Item1,socketCoordParsed.Item2,Breadboard.Instance));
         _hintManager.OnComponentInteracted(insertedObj.name); //This interacts with TextHintManager to push component into stack
@@ -52,16 +52,17 @@ private void OnSocketed(SelectEnterEventArgs args)
         //Debug.Log($"Socket {socketCoordName} now socketed with {insertedObjCoordName}");
 
         // Enable trigger
-        if (socketCollider != null)
-            socketCollider.isTrigger = true;
+        //   if (socketCollider != null)
+        // socketCollider.isTrigger = true;
 
-    TilesManage.Instance.IncrementSocketUsage(socketObj);
-    
-    // Turn off trigger again 
-        if (socketCollider != null)
-            socketCollider.isTrigger = false;
-}
+        TilesManage.Instance.IncrementSocketUsage(socketObj);
 
+        // Turn off trigger again 
+        //   if (socketCollider != null)
+        //   socketCollider.isTrigger = false;
+
+        Debug.Log($"f{Time.frameCount} SOCKETED {socketCoordName}");
+    }
     private void OnUnsocketed(SelectExitEventArgs args)
     {
         GameObject socketObj = gameObject;
@@ -71,12 +72,12 @@ private void OnSocketed(SelectEnterEventArgs args)
         string insertedObjCoordName = removedObj.name;
         (int, int) socketCoordParsed = Component2.ParseOrderedPair(socketCoordName);
 
-    /*// Get the exact Component2 at this socket and unplace by instance
-    if (Breadboard.Instance.TryGetComponentAt(socketCoordParsed, out var comp))
-    {
-        Breadboard.Instance.UnplaceComponent(comp);
-    } */
-        
+        /*// Get the exact Component2 at this socket and unplace by instance
+        if (Breadboard.Instance.TryGetComponentAt(socketCoordParsed, out var comp))
+        {
+            Breadboard.Instance.UnplaceComponent(comp);
+        } */
+        Debug.Log($"f{Time.frameCount} UNSOCKETED {socketCoordName}, canceled={args.isCanceled}\n{System.Environment.StackTrace}");
 
 
         TilesManage.Instance.DecrementSocketUsage(socketObj);

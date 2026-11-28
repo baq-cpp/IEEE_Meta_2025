@@ -53,11 +53,13 @@ public class GridManage : MonoBehaviour
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_gridOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
-                    //sphere.name = $"({x},{y})";
+                //sphere.name = $"({x},{y})";
 
-                    //if (x >= 0) sphere.name = $"{x + 2},{y}";
+                //if (x >= 0) sphere.name = $"{x + 2},{y}";
 
-                    //if (x >= 10)sphere.name = $"{x+6},{y}";
+                //if (x >= 10)sphere.name = $"{x+6},{y}";
+                foreach (var l in sphere.GetComponentsInChildren<TileSocketListener>(true))
+                    l.enabled = l.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor>() != null;
                 if (x >= 10)
                     sphere.name = $"{y},{x + 6}";
                 else if (x >= 0)
@@ -106,6 +108,9 @@ public class GridManage : MonoBehaviour
 
                 Vector3 spawnPos = new Vector3(Ypos, 0.0f, zPos)+_RailOffset;
                 var sphere = Instantiate(_spherePrefab, spawnPos, Quaternion.identity, transform);
+
+                foreach (var l in sphere.GetComponentsInChildren<TileSocketListener>(true))
+                    l.enabled = l.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor>() != null;
                 sphere.name = $"({y},{x})";
 
                 if (x >= 2) sphere.name = $"{y},{x + 10}"; //controls spheres, DO NOT TOUCH
